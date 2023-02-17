@@ -6,28 +6,33 @@ class TitleAndShowMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      width: MediaQuery.of(context).size.width,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
+    return Row(
+      // mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Text(
             title,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'Show More',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const Text(
+            'Show More',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-        ],
-      ),
+        ),
+        // GestureDetector(
+        //   child: const Text(
+        //     'Show More',
+        //     style: TextStyle(fontWeight: FontWeight.bold),
+        //   ),
+        // ),
+      ],
     );
   }
 }

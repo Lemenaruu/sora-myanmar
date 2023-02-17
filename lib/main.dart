@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sora_myanmar/home/home_screen.dart';
+import 'package:sora_myanmar/home/screens/home_screen.dart';
+import 'package:sora_myanmar/sign_in_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'poppin',
       ),
-      home: const HomeScreen(),
+      home: const SignInScreen(),
     );
   }
 }

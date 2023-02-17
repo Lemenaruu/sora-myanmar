@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sora_myanmar/home/screens/home_screen.dart';
+import 'package:sora_myanmar/router.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -45,42 +47,57 @@ class SignInScreen extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.red, width: 1.5),
-                        borderRadius: BorderRadius.circular(5),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        // foregroundColor: Colors.white,
+                        backgroundColor: Colors.white,
+                        shadowColor: Colors.grey,
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                            side: const BorderSide(color: Colors.red),
+                            borderRadius: BorderRadius.circular(4.0)),
+                        minimumSize: Size(
+                          MediaQuery.of(context).size.width,
+                          50,
+                        ), //////// HERE
                       ),
-                      child: const Center(
-                        child: Text(
-                          'SIGN IN',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
-                              fontSize: 16),
-                        ),
+                      onPressed: () {
+                        context.go(const HomeScreen());
+                      },
+                      child: const Text(
+                        'SIGN IN',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                            fontSize: 15),
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        border: Border.all(color: Colors.red, width: 1.5),
-                        borderRadius: BorderRadius.circular(5),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        // foregroundColor: Colors.white,
+                        backgroundColor: Colors.red,
+                        shadowColor: Colors.grey,
+                        elevation: 5,
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        shape: RoundedRectangleBorder(
+                            side: const BorderSide(color: Colors.red),
+                            borderRadius: BorderRadius.circular(4.0)),
+                        minimumSize: Size(
+                          MediaQuery.of(context).size.width,
+                          50,
+                        ), //////// HERE
                       ),
-                      child: const Center(
-                        child: Text(
-                          'CREATE AN ACCOUNT',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 16),
-                        ),
+                      onPressed: () {},
+                      child: const Text(
+                        'CREATE AN ACCOUNT',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            // color: Colors.white,
+                            fontSize: 15),
                       ),
                     ),
                   ],
@@ -93,3 +110,41 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
+// Container(
+                    //   width: MediaQuery.of(context).size.width,
+                    //   height: 50,
+                    //   decoration: BoxDecoration(
+                    //     border: Border.all(color: Colors.red, width: 1.5),
+                    //     borderRadius: BorderRadius.circular(5),
+                    //   ),
+                    //   child: const Center(
+                    //     child: Text(
+                    //       'SIGN IN',
+                    //       style: TextStyle(
+                    //           fontWeight: FontWeight.bold,
+                    //           color: Colors.red,
+                    //           fontSize: 16),
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   height: 20,
+                    // ),
+                    // Container(
+                    //   width: MediaQuery.of(context).size.width,
+                    //   height: 50,
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.red,
+                    //     border: Border.all(color: Colors.red, width: 1.5),
+                    //     borderRadius: BorderRadius.circular(5),
+                    //   ),
+                    //   child: const Center(
+                    //     child: Text(
+                    //       'CREATE AN ACCOUNT',
+                    //       style: TextStyle(
+                    //           fontWeight: FontWeight.bold,
+                    //           color: Colors.white,
+                    //           fontSize: 16),
+                    //     ),
+                    //   ),
+                    // ),

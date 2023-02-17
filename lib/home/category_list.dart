@@ -62,6 +62,8 @@ class NewCategory extends StatelessWidget {
         onPressed: () {},
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(color),
+          // padding: MaterialStateProperty.all(
+          //     const EdgeInsets.symmetric(vertical: 1)),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
