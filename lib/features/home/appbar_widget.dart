@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:sora_myanmar/home/screens/drawer_screen.dart';
-import 'package:sora_myanmar/router.dart';
+import 'package:sora_myanmar/common/utils.dart';
+import 'package:sora_myanmar/features/product_detail/product_detail_screen.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({super.key});
 
   void openDrawer(BuildContext context) {
-    context.go(const DrawerScreen());
+    //  context.go(ProductDetailScreen());
   }
 
   @override
@@ -31,7 +31,12 @@ class AppBarWidget extends StatelessWidget {
         Row(
           children: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (context) => const TermsAndConditionsPage(),
+                  // ));
+                  // context.go(const ProductDetailPage());
+                },
                 icon: const Icon(Icons.notifications_none_outlined)),
             IconButton(
                 onPressed: () {}, icon: const Icon(Icons.favorite_outline)),

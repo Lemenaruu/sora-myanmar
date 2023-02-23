@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProductDetailScreen extends StatefulWidget {
-  const ProductDetailScreen({super.key});
+class ProductDetailPage extends StatefulWidget {
+  const ProductDetailPage({super.key});
 
   @override
-  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+  State<ProductDetailPage> createState() => _ProductDetailPageState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
+class _ProductDetailPageState extends State<ProductDetailPage> {
   List<Color> Clrs = [Colors.black, Colors.blue, Colors.orange, Colors.yellow];
 
   @override
@@ -400,37 +400,42 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ],
                 ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    // foregroundColor: Colors.white,
+                    backgroundColor: Colors.red,
+                    shadowColor: Colors.grey,
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                        side: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(4.0)),
+                    minimumSize: Size(
+                      MediaQuery.of(context).size.width,
+                      50,
+                    ), //////// HERE
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    'ADD TO CART',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 15),
+                  ),
+                ),
               ],
             ),
           ),
         ]),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 15),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            // foregroundColor: Colors.white,
-            backgroundColor: Colors.red,
-            shadowColor: Colors.grey,
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-                side: const BorderSide(color: Colors.red),
-                borderRadius: BorderRadius.circular(4.0)),
-            minimumSize: Size(
-              MediaQuery.of(context).size.width,
-              50,
-            ), //////// HERE
-          ),
-          onPressed: () {},
-          child: const Text(
-            'ADD TO CART',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 15),
-          ),
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: () {},
+      //   icon: const Icon(Icons.edit),
+      //   label: const Text('Edit'),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // bottomSheet:
     );
   }
 }

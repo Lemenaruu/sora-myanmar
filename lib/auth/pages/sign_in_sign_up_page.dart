@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sora_myanmar/home/screens/home_screen.dart';
-import 'package:sora_myanmar/router.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+import 'package:sora_myanmar/features/home/screens/home_screen.dart';
+import 'package:sora_myanmar/router_a.dart';
+
+class SignInSignUpPage extends StatelessWidget {
+  const SignInSignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class SignInScreen extends StatelessWidget {
                         ), //////// HERE
                       ),
                       onPressed: () {
-                        context.go(const HomeScreen());
+                        
                       },
                       child: const Text(
                         'SIGN IN',

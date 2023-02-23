@@ -1,19 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sora_myanmar/home/accessories.dart';
-import 'package:sora_myanmar/home/category_list.dart';
-import 'package:sora_myanmar/home/most_popular_products_card.dart';
-import 'package:sora_myanmar/home/screens/drawer_screen.dart';
-import 'package:sora_myanmar/home/title_and_showmore.dart';
+// import 'package:go_router/go_router.dart';
+import 'package:sora_myanmar/features/home/accessories.dart';
+import 'package:sora_myanmar/features/home/category_list.dart';
+import 'package:sora_myanmar/features/home/most_popular_products_card.dart';
+import 'package:sora_myanmar/features/home/screens/drawer_screen.dart';
+import 'package:sora_myanmar/features/home/title_and_showmore.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
             IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           ],
         ),
-        drawer: const DrawerScreen(),
+        drawer: const DrawerPage(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -77,48 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-        ),
-        bottomNavigationBar: NavigationBar(
-          backgroundColor: Colors.white,
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.location_pin),
-              label: 'Blog',
-            ),
-            NavigationDestination(
-              icon: Icon(CupertinoIcons.cart),
-              label: 'Cart',
-            ),
-            NavigationDestination(
-              icon: Icon(CupertinoIcons.person),
-              label: 'Profile',
-            ),
-
-            // bottomNavigationBar: BottomNavigationBar(items: const [
-            //   BottomNavigationBarItem(
-            //     icon: Icon(Icons.home),
-            //     label: 'Home',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Icon(CupertinoIcons.heart_circle_fill),
-            //     label: 'Blog',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Icon(CupertinoIcons.cart),
-            //     label: 'Cart',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Icon(CupertinoIcons.person),
-            //     label: 'Profile',
-            //   ),
-            // ]),
-            //     label: 'Home',)
-            //
-          ],
         ),
       ),
     );
