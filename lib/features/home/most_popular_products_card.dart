@@ -1,6 +1,4 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:sora_myanmar/features/product_detail/product_detail_screen.dart';
 
 class MostPopularProductsCard extends StatelessWidget {
   const MostPopularProductsCard({super.key});
@@ -15,7 +13,7 @@ class MostPopularProductsCard extends StatelessWidget {
             onTap: () {
               // context.go( ());
               // context.router.push(const Product());
-              context.router.pushWidget(const ProductDetailPage());
+              // context.pushWidget(const ProductDetailPage());
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),

@@ -1,5 +1,6 @@
-import 'package:auto_route/auto_route.dart';
+
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:sora_myanmar/features/product_detail/product_detail_screen.dart';
 
@@ -14,7 +15,7 @@ class Accessories extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              context.router.pushWidget(const ProductDetailPage());
+              // context.push();
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
