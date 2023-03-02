@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 // import 'package:go_router/go_router.dart';
 import 'package:sora_myanmar/features/home/accessories.dart';
 import 'package:sora_myanmar/features/home/category_list.dart';
 import 'package:sora_myanmar/features/home/most_popular_products_card.dart';
 import 'package:sora_myanmar/features/home/screens/drawer_screen.dart';
 import 'package:sora_myanmar/features/home/title_and_showmore.dart';
+import 'package:sora_myanmar/providers/route_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,11 +42,15 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {},
                 icon: const Icon(Icons.notifications_none_outlined)),
             IconButton(
-                onPressed: () {}, icon: const Icon(Icons.favorite_outline)),
+              onPressed: () {
+                context.pushNamed(favourite);
+              },
+              icon: const Icon(Icons.favorite_outline),
+            ),
             IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           ],
         ),
-        drawer: const DrawerPage(),
+        drawer: DrawerPage(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -53,7 +59,10 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 15,
                 ),
-                CategoryList(),
+                SizedBox(
+                  height: 35,
+                  child: CategoryList(),
+                ),
                 SizedBox(
                   height: 5,
                 ),

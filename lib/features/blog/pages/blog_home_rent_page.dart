@@ -20,6 +20,9 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
     Colors.teal,
   ];
 
+  bool isBookmark = false;
+  bool isFavourite = false;
+
   // the index of the current page
   int _activePage = 0;
   @override
@@ -130,15 +133,27 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
-                              children: const [
-                                Icon(
-                                  CupertinoIcons.heart,
-                                  size: 22,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isFavourite = !isFavourite;
+                                    });
+                                  },
+                                  child: isFavourite
+                                      ? const Icon(
+                                          CupertinoIcons.heart,
+                                          // size: 22,
+                                        )
+                                      : const Icon(
+                                          CupertinoIcons.heart_fill,
+                                          color: AppColor.red,
+                                        ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 4,
                                 ),
-                                Text(
+                                const Text(
                                   '200',
                                   style: TextStyle(
                                     fontSize: 12,
@@ -147,17 +162,21 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                                 ),
                               ],
                             ),
-                            Column(
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.bookmark_outlined,
-                                    color: AppColor.red,
-                                  ),
-                                ),
-                              ],
-                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    isBookmark = !isBookmark;
+                                  });
+                                },
+                                child: isBookmark
+                                    ? const Icon(
+                                        Icons.bookmark_outline,
+                                        // color: AppColor.red,
+                                      )
+                                    : const Icon(
+                                        Icons.bookmark,
+                                        color: AppColor.red,
+                                      )),
                           ],
                         ),
                       ),
@@ -391,22 +410,9 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.7,
-                      height: 40,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          // foregroundColor: Colors.white,
-                          backgroundColor: Colors.white,
-                          shadowColor: Colors.grey,
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                              side: const BorderSide(color: Colors.red),
-                              borderRadius: BorderRadius.circular(4.0)),
-                          // minimumSize: Size(
-                          //   MediaQuery.of(context).size.width * 0.7,
-                          //   50,
-                          // ), //////// HERE
-                        ),
+                      height: 30,
+                      child: OutlinedButton(
+                        style: buttonStyleWithBordersideColor,
                         onPressed: () {},
                         child: const Text(
                           'Request a Tour',
@@ -420,28 +426,20 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                     const SizedBox(
                       height: 35,
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        // foregroundColor: Colors.white,
-                        backgroundColor: AppColor.red,
-                        shadowColor: Colors.grey,
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                            // side: const BorderSide(color: Colors.red),
-                            borderRadius: BorderRadius.circular(4.0)),
-                        minimumSize: Size(
-                          MediaQuery.of(context).size.width,
-                          50,
-                        ), //////// HERE
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'RENT',
-                        style: TextStyle(
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 35,
+                      child: OutlinedButton(
+                        style: buttonStyleWithBackgroundColor,
+                        onPressed: () {},
+                        child: const Text(
+                          'RENT',
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            fontSize: 14),
+                            fontSize: 14,
+                          ),
+                        ),
                       ),
                     ),
                   ],

@@ -45,6 +45,8 @@ dependencies:
   dotted_line: ^3.1.0
   flutter_riverpod: ^2.2.0
   shared_preferences: ^2.0.18
+  flutter_svg: ^2.0.2
+  bottom_bar_page_transition: ^2.0.0
 
 
   
@@ -78,6 +80,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/phone.png
+    - assets/svgs/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

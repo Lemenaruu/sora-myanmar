@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class DrawerPage extends StatelessWidget {
-  const DrawerPage({super.key});
+  DrawerPage({super.key});
+  final rootNavigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Drawer(
+        key: rootNavigatorKey,
         elevation: 0,
         child: SingleChildScrollView(
           child: Column(

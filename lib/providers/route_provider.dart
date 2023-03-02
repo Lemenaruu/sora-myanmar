@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sora_myanmar/features/blog/pages/blog_homewifi_details_page.dart';
+import 'package:sora_myanmar/features/blog/pages/blog_jobs_page.dart';
 import 'package:sora_myanmar/features/blog/pages/blog_page.dart';
 import 'package:sora_myanmar/features/cart/pages/shopping_cart_page.dart';
+import 'package:sora_myanmar/features/favourite/favourite_page.dart';
 import 'package:sora_myanmar/features/home/screens/home_screen.dart';
-import 'package:sora_myanmar/features/profile/profile_screen.dart';
+import 'package:sora_myanmar/features/product_detail/product_detail_screen.dart';
+import 'package:sora_myanmar/features/profile/profile_setting_page.dart';
 
+import '../features/blog/pages/blog_home_rent_page.dart';
+import '../features/profile/profile_page.dart';
 import '../scaffold_with_bottom_navigationbar.dart';
 
 const home = 'home';
+const profileSetting = 'profile_setting';
 const blog = 'blog';
 const cart = 'cart';
 const profile = 'profile';
+const productDetail = 'product_detail';
+const blogJobs = 'blog_jobs';
+const blogHomewifi = 'blog_homewifi';
+const blogHomeRent = '/blog_home_rent';
+const favourite = 'favourite';
+
 // const WISHLIST = 'wishlist';
 // const PRODUCT = 'product';
 // const LOGIN = 'login';
@@ -28,7 +41,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   final shellNavigatorKey = GlobalKey<NavigatorState>();
 
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/home',
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: [
@@ -40,6 +53,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         },
         routes: [
           GoRoute(
+            parentNavigatorKey: shellNavigatorKey,
             name: home,
             path: '/home',
             pageBuilder: (context, state) =>
@@ -48,14 +62,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             name: blog,
             path: '/blog',
-            pageBuilder: (context, state) => NoTransitionPage(
+            pageBuilder: (context, state) => const NoTransitionPage(
               child: BlogPage(),
             ),
           ),
 
-          
           GoRoute(
-            parentNavigatorKey: rootNavigatorKey,
+            parentNavigatorKey: shellNavigatorKey,
             name: cart,
             path: '/cart',
             // redirect: (context, state) {
@@ -69,6 +82,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             ),
           ),
           GoRoute(
+            parentNavigatorKey: shellNavigatorKey,
             name: profile,
             path: '/profile',
             // redirect: (context, state) {
@@ -96,30 +110,57 @@ final routerProvider = Provider<GoRouter>((ref) {
           // ),
         ],
       ),
-      // GoRoute(
-      //   parentNavigatorKey: rootNavigatorKey,
-      //   name: PRODUCT,
-      //   path: "/product/:productId",
-      //   pageBuilder: (context, state) => NoTransitionPage(
-      //     child: ProductDetailsScreen(
-      //       productId: int.parse(state.params['productId'] as String),
-      //     ),
-      //   ),
-      // ),
-      // GoRoute(
-      //   parentNavigatorKey: rootNavigatorKey,
-      //   name: LOGIN,
-      //   path: "/login",
-      //   redirect: (context, state) {
-      //     if (token != null) {
-      //       return '/';
-      //     }
-      //     return null;
-      //   },
-      //   pageBuilder: (context, state) => const NoTransitionPage(
-      //     child: LoginScreen(),
-      //   ),
-      // ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: profileSetting,
+        path: "/profile_setting",
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: ProfileSettingPage(),
+          //  ProductDetailsScreen(
+          //   productId: int.parse(state.params['productId'] as String),
+          // ),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: productDetail,
+        path: "/product_detail",
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: ProductDetailPage(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: blogJobs,
+        path: "/blog_jobs",
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: BlogJobsPage(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: blogHomewifi,
+        path: "/blog_homewifi",
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: BlogHomewifiDetailsPage(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: blogHomeRent,
+        path: "/blog_home_rent",
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: BlogHomeRentPage(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: favourite,
+        path: "/favourite",
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: FavouritesPage(),
+        ),
+      ),
       // GoRoute(
       //   parentNavigatorKey: rootNavigatorKey,
       //   name: REGISTER,

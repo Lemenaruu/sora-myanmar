@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sora_myanmar/providers/route_provider.dart';
 
 class MostPopularProductsCard extends StatelessWidget {
   const MostPopularProductsCard({super.key});
@@ -14,6 +16,7 @@ class MostPopularProductsCard extends StatelessWidget {
               // context.go( ());
               // context.router.push(const Product());
               // context.pushWidget(const ProductDetailPage());
+              context.pushNamed(productDetail);
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),

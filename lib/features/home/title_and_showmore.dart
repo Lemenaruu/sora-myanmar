@@ -14,7 +14,7 @@ class TitleAndShowMore extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),

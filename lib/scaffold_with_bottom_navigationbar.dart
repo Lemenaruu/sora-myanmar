@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sora_myanmar/constants.dart';
 import 'package:sora_myanmar/providers/bottom_navigation_provider.dart';
@@ -20,50 +19,99 @@ class ScaffoldWithBottomNavBar extends ConsumerStatefulWidget {
 
 final tabs = [
   ScaffoldWithNavBarTabItem(
-    initialLocation: '/',
-    icon: const Icon(CupertinoIcons.person),
-    activeIcon: const FaIcon(
-      FontAwesomeIcons.house,
+    initialLocation: '/home',
+    icon: SvgPicture.asset(
+      "assets/svgs/home_outlined.svg",
+      // color: AppColor.red,
+    ),
+    activeIcon: SvgPicture.asset(
+      "assets/svgs/home.svg",
       color: AppColor.red,
     ),
     label: const Text(
       'Home',
       style: TextStyle(
         color: AppColor.red,
+        fontSize: 12,
       ),
     ),
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/blog',
-    icon: const FaIcon(FontAwesomeIcons.compass),
-    activeIcon:
-        const FaIcon(FontAwesomeIcons.solidCompass, color: AppColor.red),
+    icon: SizedBox(
+      height: 25,
+      width: 24,
+      child: SvgPicture.asset(
+        "assets/svgs/compass_outlined1.svg",
+        // color: AppColor.red,
+        // fit: BoxFit.fitWidth,
+      ),
+    ),
+    activeIcon: SvgPicture.asset(
+      "assets/svgs/compass.svg",
+      color: AppColor.red,
+    ),
     label: const Text(
       'Blog',
       style: TextStyle(
         color: AppColor.red,
+        fontSize: 12,
       ),
     ),
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/cart',
-    icon: const Icon(CupertinoIcons.cart),
-    activeIcon: const Icon(
-      CupertinoIcons.cart_fill,
-      color: AppColor.red,
+    icon: SizedBox(
+      height: 29,
+      width: 28,
+      child: SvgPicture.asset(
+        "assets/svgs/basket_outlined.svg",
+        // color: AppColor.red,
+      ),
+    ),
+    activeIcon: SizedBox(
+      height: 30,
+      width: 33,
+      child: SvgPicture.asset(
+        "assets/svgs/basket.svg",
+        color: AppColor.red,
+      ),
     ),
     label: const Text(
       'Cart',
-      style: TextStyle(color: AppColor.red),
+      style: TextStyle(
+        color: AppColor.red,
+        fontSize: 12,
+      ),
     ),
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/profile',
-    icon: const Icon(CupertinoIcons.person),
-    activeIcon: const Icon(CupertinoIcons.person_fill, color: AppColor.red),
+    icon: SizedBox(
+      height: 20,
+      width: 20,
+      child: SvgPicture.asset(
+        "assets/svgs/user.svg",
+        // fit: BoxFit.cover,
+        // color: AppColor.red,
+        // fit: BoxFit.fitHeight,
+      ),
+    ),
+    activeIcon: SizedBox(
+      height: 20,
+      width: 20,
+      child: SvgPicture.asset(
+        "assets/svgs/user_outlined.svg",
+        color: AppColor.red,
+        // fit: BoxFit.cover,
+      ),
+    ),
     label: const Text(
       'Profile',
-      style: TextStyle(color: AppColor.red),
+      style: TextStyle(
+        color: AppColor.red,
+        fontSize: 12,
+      ),
     ),
   ),
 ];
@@ -101,8 +149,9 @@ class _ScaffoldWithBottomNavBarState
         bottom: false,
         child: widget.child,
       ),
-      backgroundColor: Colors.grey[200],
+      // backgroundColor: Colors.white,
       bottomNavigationBar: StylishBottomBar(
+        backgroundColor: Colors.grey.shade100,
         elevation: 0,
 
         currentIndex: currentPosition,
@@ -116,14 +165,18 @@ class _ScaffoldWithBottomNavBarState
 
         items: tabs,
         option: BubbleBarOptions(
+          bubbleFillStyle: BubbleFillStyle.fill,
+          inkEffect: false,
+          inkColor: Colors.white,
+          // padding: const EdgeInsets.all(20),
+
           barStyle: BubbleBarStyle.vertical,
 
-          opacity: 0.3,
+          opacity: 0.0,
           unselectedIconColor: Colors.black,
           // iconSize: 20,
         ),
-        hasNotch: true,
-        // backgroundColor: Colors.transparent,
+        // hasNotch: true,
       ),
     );
   }
@@ -143,8 +196,3 @@ class ScaffoldWithNavBarTabItem extends BottomBarItem {
 
   final String initialLocation;
 }
-
-
-
-
-

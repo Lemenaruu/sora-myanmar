@@ -1,36 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:sora_myanmar/features/cart/pages/shopping_cart_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sora_myanmar/providers/route_provider.dart';
 
 void main() {
   runApp(
-    const MyApp(),
+    const ProviderScope(child: MyApp()),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
   @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _MyAppState();
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ShoppingCartPage(),
+    var router = ref.watch(routerProvider);
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 0,
+        ),
+        fontFamily: 'poppin',
+      ),
+      routerConfig: router,
     );
   }
 }
 
-// class MyApp extends ConsumerStatefulWidget {
+// class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
 
-//   @override
-//   ConsumerState<ConsumerStatefulWidget> createState() => _MyAppState();
-// }
-
-// class _MyAppState extends ConsumerState<MyApp> {
-//   @override
+  // @override
 //   Widget build(BuildContext context) {
-//     var router = ref.watch(routerProvider);
-//     return MaterialApp.router(
-//       debugShowCheckedModeBanner: false,
+//     return MaterialApp(
 //       theme: ThemeData(
 //         scaffoldBackgroundColor: Colors.white,
 //         primarySwatch: Colors.blue,
@@ -41,7 +52,8 @@ class MyApp extends StatelessWidget {
 //         ),
 //         fontFamily: 'poppin',
 //       ),
-//       routerConfig: router,
+//       home: const ShoppingCartPage(),
 //     );
 //   }
 // }
+
