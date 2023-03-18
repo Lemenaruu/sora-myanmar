@@ -32,7 +32,7 @@ import '../ui/favourite/favourite_page.dart';
 import '../ui/filter_blog_houserent_page.dart';
 import '../ui/filter_home_page.dart';
 import '../ui/home_wifi_request_form/home_wifi_request_form1_page.dart';
-import '../ui/home_wifi_request_form2_page.dart';
+import '../ui/home_wifi_request_form/home_wifi_request_form2_page.dart';
 import '../ui/notification_page.dart';
 import '../ui/order/order_completed_page.dart';
 import '../ui/order/order_failed_page.dart';

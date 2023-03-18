@@ -8,12 +8,8 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Notification',
-          style: txtMedium.copyWith(
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
         ),
       ),
       body: Padding(
