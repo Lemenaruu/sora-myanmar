@@ -21,7 +21,21 @@ class _RequestATourEachdayPageState
   Type selectedRadio = Type.eachDay;
   final timeinput = TextEditingController();
   bool _isChecked = false;
-  TimeOfDay time = const TimeOfDay(hour: 10, minute: 00);
+  TimeOfDay _timeOfDay = const TimeOfDay(hour: 8, minute: 30);
+
+  // show time picker method
+  void _showTimePicker() {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((value) {
+      setState(() {
+        _timeOfDay = value!;
+        final time = _timeOfDay.format(context).toString();
+        timeinput.text = time;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +162,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
@@ -165,7 +181,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
@@ -211,7 +229,7 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () {},
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
@@ -228,7 +246,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
@@ -274,7 +294,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
@@ -291,7 +313,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
@@ -337,7 +361,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
@@ -354,7 +380,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
@@ -400,7 +428,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
@@ -417,7 +447,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
@@ -463,7 +495,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
@@ -480,7 +514,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
@@ -526,7 +562,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
@@ -543,7 +581,9 @@ class _RequestATourEachdayPageState
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextFormField(
-                      onTap: () async {},
+                      onTap: () async {
+                        _showTimePicker();
+                      },
                       controller: timeinput,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),

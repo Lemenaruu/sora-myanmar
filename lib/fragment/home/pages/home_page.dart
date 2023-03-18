@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               // context.go("/otp");
-              context.pushNamed(notification);
+              context.pushNamed(requestATourEachday);
             },
             icon: const Icon(
               CupertinoIcons.bell,
