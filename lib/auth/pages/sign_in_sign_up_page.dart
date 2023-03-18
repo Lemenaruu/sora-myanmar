@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sora_myanmar/constants/widgets_constants.dart';
+import 'package:sora_myanmar/providers/route_provider.dart';
 
 // import 'package:sora_myanmar/router.dart';
 
@@ -9,13 +12,13 @@ class SignInSignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Center(
+                child: Column(
                   children: const [
                     SizedBox(
                       height: 30,
@@ -30,119 +33,61 @@ class SignInSignUpPage extends StatelessWidget {
                     Text(
                       'Welcome',
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 30,
                     ),
-                    Text(
-                      'Sign up to get started and experience',
-                      style: TextStyle(fontSize: 16),
+                    Center(
+                      child: Text(
+                        'Sign up to get started and experience',
+                        style: txtMedium,
+                      ),
                     ),
                     Text(
                       'great shopping deals',
-                      style: TextStyle(fontSize: 16),
+                      style: txtMedium,
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        // foregroundColor: Colors.white,
-                        backgroundColor: Colors.white,
-                        shadowColor: Colors.grey,
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                            side: const BorderSide(color: Colors.red),
-                            borderRadius: BorderRadius.circular(4.0)),
-                        minimumSize: Size(
-                          MediaQuery.of(context).size.width,
-                          50,
-                        ), //////// HERE
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'SIGN IN',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                            fontSize: 15),
+              ),
+              Column(
+                children: [
+                  OutlinedButton(
+                    style: buttonStyleWithBordersideColor,
+                    onPressed: () {
+                      context.pushNamed(signIn);
+                    },
+                    child: const Text(
+                      'SIGN IN',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.red,
+                        fontSize: 12,
                       ),
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        // foregroundColor: Colors.white,
-                        backgroundColor: Colors.red,
-                        shadowColor: Colors.grey,
-                        elevation: 5,
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        shape: RoundedRectangleBorder(
-                            side: const BorderSide(color: Colors.red),
-                            borderRadius: BorderRadius.circular(4.0)),
-                        minimumSize: Size(
-                          MediaQuery.of(context).size.width,
-                          50,
-                        ), //////// HERE
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'CREATE AN ACCOUNT',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            // color: Colors.white,
-                            fontSize: 15),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  OutlinedButton(
+                    style: buttonStyleWithBackgroundColor,
+                    onPressed: () {},
+                    child: const Text(
+                      'CREATE AN ACCOUNT',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 12,
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-// Container(
-                    //   width: MediaQuery.of(context).size.width,
-                    //   height: 50,
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(color: Colors.red, width: 1.5),
-                    //     borderRadius: BorderRadius.circular(5),
-                    //   ),
-                    //   child: const Center(
-                    //     child: Text(
-                    //       'SIGN IN',
-                    //       style: TextStyle(
-                    //           fontWeight: FontWeight.bold,
-                    //           color: Colors.red,
-                    //           fontSize: 16),
-                    //     ),
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   height: 20,
-                    // ),
-                    // Container(
-                    //   width: MediaQuery.of(context).size.width,
-                    //   height: 50,
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.red,
-                    //     border: Border.all(color: Colors.red, width: 1.5),
-                    //     borderRadius: BorderRadius.circular(5),
-                    //   ),
-                    //   child: const Center(
-                    //     child: Text(
-                    //       'CREATE AN ACCOUNT',
-                    //       style: TextStyle(
-                    //           fontWeight: FontWeight.bold,
-                    //           color: Colors.white,
-                    //           fontSize: 16),
-                    //     ),
-                    //   ),
-                    // ),
