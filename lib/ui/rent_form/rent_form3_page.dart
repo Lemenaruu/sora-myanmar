@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 
 import '../../constants/widgets_constants.dart';
 
@@ -77,9 +79,7 @@ class _RentForm3PageState extends ConsumerState<RentForm3Page> {
                     width: size.width * 0.2,
                     child: const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Divider(
-                        color: Colors.grey,
-                      ),
+                      child: Divider(),
                     ),
                   ),
                   CircleAvatar(
@@ -99,9 +99,7 @@ class _RentForm3PageState extends ConsumerState<RentForm3Page> {
                     width: size.width * 0.2,
                     child: const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Divider(
-                        color: Colors.grey,
-                      ),
+                      child: Divider(),
                     ),
                   ),
                   CircleAvatar(
@@ -120,7 +118,7 @@ class _RentForm3PageState extends ConsumerState<RentForm3Page> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Text(
                 'Contact Person(Japan)',
@@ -128,27 +126,26 @@ class _RentForm3PageState extends ConsumerState<RentForm3Page> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Name(English)'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Mobile Number'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
 
               //
@@ -156,29 +153,25 @@ class _RentForm3PageState extends ConsumerState<RentForm3Page> {
                 controller: _dateController,
                 decoration: inputDecoration.copyWith(
                   label: const Text('Birthday'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                   suffixIcon: IconButton(
-                      onPressed: () {
-                        pickDate();
-                      },
-                      icon: Icon(
-                        Icons.calendar_month_outlined,
-                        color: Colors.grey.shade600,
-                      )),
+                    onPressed: () {
+                      pickDate();
+                    },
+                    icon: SvgPicture.asset(
+                      SvgPic.calendar,
+                    ),
+                  ),
                 ),
                 // initialValue: 'Day - Month - Year',
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Address'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
 
@@ -191,27 +184,27 @@ class _RentForm3PageState extends ConsumerState<RentForm3Page> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
+
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Name(English)'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Mobile Number'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
 
               //
@@ -219,30 +212,29 @@ class _RentForm3PageState extends ConsumerState<RentForm3Page> {
                 controller: _dateController,
                 decoration: inputDecoration.copyWith(
                   label: const Text('Birthday'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                   suffixIcon: IconButton(
-                      onPressed: () {
-                        pickDate();
-                      },
-                      icon: Icon(
-                        Icons.calendar_month_outlined,
-                        color: Colors.grey.shade600,
-                      )),
+                    onPressed: () {
+                      pickDate();
+                    },
+                    icon: SvgPicture.asset(
+                      SvgPic.calendar,
+                    ),
+                  ),
                 ),
                 // initialValue: 'Day - Month - Year',
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Address'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               OutlinedButton(
                   style: buttonStyleWithBackgroundColor,

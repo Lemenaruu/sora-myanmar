@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 import '../../constants/widgets_constants.dart';
+import '../constants/string_constants.dart';
 
 enum Gender { male, female }
 
@@ -111,9 +113,9 @@ class _ProfileSettingPageState extends State<CardInformationPage> {
                   onPressed: () {
                     pickDate();
                   },
-                  icon: const Icon(
-                    Icons.calendar_month_outlined,
-                    color: Colors.black54,
+                  icon: SvgPicture.asset(
+                    SvgPic.calendar,
+                    color: Colors.black,
                   ),
                 ),
               ),

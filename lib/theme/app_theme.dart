@@ -5,11 +5,23 @@ class AppTheme {
     // primaryColor: AppColor.red,
     scaffoldBackgroundColor: Colors.white,
 
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(
+        fontSize: 16,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 14,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 12,
+      ),
+    ),
+
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
         color: Colors.black,
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: 'poppin',
       ),
       backgroundColor: Colors.white,

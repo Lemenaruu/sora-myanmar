@@ -58,6 +58,7 @@ dependencies:
   google_sign_in: ^6.0.2
   firebase_auth: ^4.2.2
   draggable_fab: ^0.1.4
+  cached_network_image: ^3.2.3
   
 
 
@@ -91,7 +92,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/images/phone.png
     - assets/svgs/
   #   - images/a_dot_ham.jpeg
 

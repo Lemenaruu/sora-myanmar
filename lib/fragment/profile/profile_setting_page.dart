@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 
 import '../../constants/widgets_constants.dart';
 
@@ -142,13 +143,8 @@ class _ProfileSettingPageState extends State<ProfileSettingPage> {
               const SizedBox(
                 height: 20,
               ),
-              SvgPicture.asset(
-                "assets/svgs/actions-settings.svg",
-                width: 100,
-                height: 100,
-                color: AppColor.red,
-              ),
               IntlPhoneField(
+                // searchText: 'Search Country',
                 keyboardType: TextInputType.number,
                 decoration: inputDecoration.copyWith(
                   label: const Text('Mobile Number or Email'),
@@ -162,7 +158,6 @@ class _ProfileSettingPageState extends State<ProfileSettingPage> {
                   print(phone.completeNumber);
                 },
               ),
-              //
               TextFormField(
                 controller: dateController,
                 decoration: inputDecoration.copyWith(
@@ -172,24 +167,17 @@ class _ProfileSettingPageState extends State<ProfileSettingPage> {
                     fontSize: 14,
                   ),
                   suffixIcon: IconButton(
-                      onPressed: () {
-                        pickDate();
-                      },
-                      icon: Icon(
-                        Icons.calendar_month_outlined,
-                        color: Colors.grey.shade600,
-                      )),
+                    onPressed: () {
+                      pickDate();
+                    },
+                    icon: SvgPicture.asset(
+                      SvgPic.calendar,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
                 // initialValue: 'Day - Month - Year',
               ),
-              // suffixIcon: IconButton(
-              //         onPressed: () {
-              //           pickDate();
-              //         },
-              //         icon: const FaIcon(
-              //           FontAwesomeIcons.calendarAlt,
-              //           color: Colors.black,
-              //         )),
               const SizedBox(
                 height: 10,
               ),
@@ -226,10 +214,6 @@ class _ProfileSettingPageState extends State<ProfileSettingPage> {
                   Row(
                     children: [
                       Radio<Gender>(
-                        // fillColor: MaterialStateProperty.all(
-                        //   Colors.black,
-                        // ),
-
                         activeColor: AppColor.red,
                         value: Gender.female,
                         groupValue: selectedRadio,

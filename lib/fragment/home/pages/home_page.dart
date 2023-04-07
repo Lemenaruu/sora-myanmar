@@ -2,7 +2,9 @@
 import 'package:draggable_fab/draggable_fab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 import 'package:sora_myanmar/constants/widgets_constants.dart';
 import 'package:sora_myanmar/fragment/home/accessories.dart';
 import 'package:sora_myanmar/fragment/home/category_list.dart';
@@ -32,7 +34,11 @@ class _HomePageState extends State<HomePage> {
               // _scaffoldKey.currentState?.openDrawer();
               Scaffold.of(context).openDrawer();
             },
-            icon: const Icon(Icons.menu_outlined),
+            icon: SvgPicture.asset(
+              SvgPic.menuRight,
+              height: 28,
+              color: Colors.grey.shade700,
+            ),
           );
         }),
         title: const Text(
@@ -42,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               // context.go("/otp");
-              context.pushNamed(requestATourEachday);
+              context.pushNamed(mySubscriptions);
             },
             icon: const Icon(
               CupertinoIcons.bell,
@@ -50,6 +56,7 @@ class _HomePageState extends State<HomePage> {
           ),
           IconButton(
             onPressed: () {
+              // context.pushNamed(favourite);
               context.pushNamed(favourite);
             },
             icon: const Icon(

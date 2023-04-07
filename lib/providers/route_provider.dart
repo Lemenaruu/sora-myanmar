@@ -7,7 +7,7 @@ import 'package:sora_myanmar/fragment/blog/pages/blog_jobs_page.dart';
 import 'package:sora_myanmar/fragment/blog/pages/blog_page.dart';
 import 'package:sora_myanmar/fragment/cart/shopping_cart_page.dart';
 import 'package:sora_myanmar/fragment/home/pages/home_page.dart';
-import 'package:sora_myanmar/fragment/home/pages/product_detail_screen.dart';
+import 'package:sora_myanmar/fragment/home/pages/product_detail_page.dart';
 import 'package:sora_myanmar/fragment/profile/profile_setting_page.dart';
 import 'package:sora_myanmar/providers/auth_provider.dart';
 import 'package:sora_myanmar/side_menu/my_subscriptions_page.dart';
@@ -36,13 +36,14 @@ import '../ui/home_wifi_request_form/home_wifi_request_form2_page.dart';
 import '../ui/notification_page.dart';
 import '../ui/order/order_completed_page.dart';
 import '../ui/order/order_failed_page.dart';
-import '../ui/order_details_page.dart';
+import '../ui/order/order_details_page.dart';
 import '../ui/rent_form/rent_form1_page.dart';
 import '../ui/rent_form/rent_form2_page.dart';
 import '../ui/rent_form/rent_form3_page.dart';
 import '../ui/request_a_tour_eachday_page.dart';
 import '../ui/shipping_and_payment/shipping_and_payment_page.dart';
 import '../ui/shipping_and_payment/shipping_and_payment_with_data_page.dart';
+
 
 const home = 'home';
 const profileSetting = 'profile_setting';
@@ -51,7 +52,8 @@ const cart = 'cart';
 const profile = 'profile';
 const productDetail = 'product_detail';
 const blogJobs = 'blog_jobs';
-// const blogHomewifi = 'blog_homewifi';
+
+
 const blogHomeRent = 'blog_home_rent';
 const blogHomeWifiDetail = 'blog_home_wifi_detail';
 const favourite = 'favourite';
@@ -59,6 +61,8 @@ const otp = 'otp';
 const orderFailed = 'order_failed';
 const orderCompleted = 'order_completed';
 const notification = 'notification';
+
+
 const choosePayment = 'choose_payment';
 const myAddresses = 'my_addresses';
 const myOrders = 'my_orders';
@@ -67,29 +71,37 @@ const cardInfomation = 'card_information';
 const filterHome = 'filter_home';
 const filterBlogHouseRent = 'filter_blog_house_rent';
 const termsAndConditions = 'terms_and_conditions';
+
+
 const setting = 'setting';
 const saved = 'saved';
 const pointHistory = 'point_history';
 const mySubscriptions = 'my_subscriptions';
+
+
 const rentForm1 = 'rent_form1';
 const rentForm2 = 'rent_form2';
 const rentForm3 = 'rent_form3';
+
+
 const homeWifiRequestForm1 = 'home_wifi_request_form1';
 const homeWifiRequestForm2 = 'home_wifi_request_form2';
+
+
 const requestATourEachday = 'request_a_tour_eachday';
+
+
 const shippingAndPaymentWithData = 'shipping_and_payment_with_data';
 const shippingAndPayment = 'shipping_and_payment';
 const orderDetails = 'order_details';
 const aboutUs = 'about_us';
 
-// const WISHLIST = 'wishlist';
-// const PRODUCT = 'product';
+
 const signIn = 'sign_in';
 const signUp = 'sign_up';
 const signInSignUp = 'sign_in_sign_up';
-// const OTP = 'otp';
 
-// const CHECKOUT = 'checkout';
+
 
 final routerProvider = Provider<GoRouter>((ref) {
   var token = ref.watch(tokenProvider);
@@ -143,56 +155,38 @@ final routerProvider = Provider<GoRouter>((ref) {
             parentNavigatorKey: shellNavigatorKey,
             name: profile,
             path: '/profile',
-            // redirect: (context, state) {
-            //   if (token == null) {
-            //     return '/login';
-            //   }
-            //   return null;
-            // },
+            redirect: (context, state) {
+              if (token == null) {
+                return '/sign_in';
+              }
+              return null;
+            },
             pageBuilder: (context, state) => const NoTransitionPage(
               child: ProfilePage(),
             ),
           ),
-          // GoRoute(
-          //   name: WISHLIST,
-          //   path: "/wishlist",
-          //   redirect: (context, state) {
-          //     if (token == null) {
-          //       return '/login';
-          //     }
-          //     return null;
-          //   },
-          //   pageBuilder: (context, state) => const NoTransitionPage(
-          //     child: WishlistFragment(),
-          //   ),
-          // ),
+      
         ],
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: profileSetting,
         path: "/profile_setting",
-        redirect: (context, state) {
-          if (token == null) {
-            return '/sign_in_sign_up';
-          }
-          return null;
-        },
+      
         pageBuilder: (context, state) => const NoTransitionPage(
           child: ProfileSettingPage(),
 
-          //  ProductDetailsScreen(
-          //   productId: int.parse(state.params['productId'] as String),
-          // ),
+          
         ),
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: productDetail,
-        path: "/product_detail/:productId",
-        pageBuilder: (context, state) => NoTransitionPage(
+        path: "/product_detail",
+        pageBuilder: (context, state) => const NoTransitionPage(
           child: ProductDetailPage(
-              productId: int.parse(state.params['productId'] as String)),
+              // productId: int.parse(state.params['productId'] as String),
+              ),
         ),
       ),
       GoRoute(
@@ -203,14 +197,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: BlogJobsPage(),
         ),
       ),
-      // GoRoute(
-      //   parentNavigatorKey: rootNavigatorKey,
-      //   name: blogHomewifi,
-      //   path: "/blog_homewifi",
-      //   pageBuilder: (context, state) => const NoTransitionPage(
-      //     child: BlogHomewifiDetailsPage(),
-      //   ),
-      // ),
+      
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: blogHomeRent,
@@ -442,35 +429,16 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: rootNavigatorKey,
         name: signInSignUp,
         path: "/sign_in_sign_up",
-        // redirect: (context, state) {
-        //   if (token != null) {
-        //     return '/';
-        //   }
-        //   return null;
-        // },
+      
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignInSignUpPage(),
         ),
       ),
+
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: signIn,
         path: "/sign_in",
-
-        // redirect: (context, state) async {
-        //   SharedPreferences pref = await SharedPreferences.getInstance();
-        //   String? token = pref.getString("token");
-        //   if (token != null) {
-        //     return '/home';
-        //   }
-        //   return null;
-        // },
-        // redirect: (context, state) {
-        //   if (token != null) {
-        //     return '/home';
-        //   }
-        //   return null;
-        // },
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignInPage(),
         ),
@@ -479,12 +447,6 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: rootNavigatorKey,
         name: signUp,
         path: "/sign_up",
-        // redirect: (context, state) {
-        //   if (token != null) {
-        //     return '/home';
-        //   }
-        //   return null;
-        // },
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignUpPage(),
         ),
@@ -497,43 +459,6 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: ChoosePaymentMethodPage(),
         ),
       ),
-
-      // GoRoute(
-      //   parentNavigatorKey: rootNavigatorKey,
-      //   name: OTP,
-      //   path: "/otp",
-      //   pageBuilder: (context, state) =>  NoTransitionPage(
-      //     child: OtpScreen(),
-      //   ),
-      // ),
-      // GoRoute(
-      //   parentNavigatorKey: rootNavigatorKey,
-      //   name: CART,
-      //   path: "/cart",
-      //   redirect: (context, state) {
-      //     if (token == null) {
-      //       return '/login';
-      //     }
-      //     return null;
-      //   },
-      //   pageBuilder: (context, state) =>  NoTransitionPage(
-      //     child: CartScreenNew(),
-      //   ),
-      // ),
-      // GoRoute(
-      //   parentNavigatorKey: rootNavigatorKey,
-      //   name: CHECKOUT,
-      //   path: "/checkout",
-      //   redirect: (context, state) {
-      //     if (token == null) {
-      //       return '/login';
-      //     }
-      //     return null;
-      //   },
-      //   pageBuilder: (context, state) => const NoTransitionPage(
-      //     child: CheckoutScreen(),
-      //   ),
-      // ),
     ],
   );
 });

@@ -85,7 +85,10 @@ class _FilterHomePageState extends ConsumerState<FilterHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Divider(),
+            const Divider(
+              color: Colors.grey,
+              height: 0,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -164,7 +167,10 @@ class _FilterHomePageState extends ConsumerState<FilterHomePage> {
                       ),
                     ],
                   ),
-                  const Divider(),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0,
+                  ),
                   ExpansionPanelList(
                     expansionCallback: (panelIndex, isExpanded) {
                       setState(() {
@@ -238,7 +244,10 @@ class _FilterHomePageState extends ConsumerState<FilterHomePage> {
                       ),
                     ],
                   ),
-                  const Divider(),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0,
+                  ),
                   ExpansionPanelList(
                     expansionCallback: (panelIndex, isExpanded) {
                       setState(() {
@@ -279,7 +288,7 @@ class _FilterHomePageState extends ConsumerState<FilterHomePage> {
                               min: 50000,
                               max: 1000000,
                               activeColor: AppColor.red,
-                              divisions: 20,
+                              // divisions: 20,
                               inactiveColor: Colors.grey,
                               labels: RangeLabels(
                                   "MMK: ${formatter.format(startval.toInt())}",
@@ -298,7 +307,10 @@ class _FilterHomePageState extends ConsumerState<FilterHomePage> {
                       ),
                     ],
                   ),
-                  const Divider(),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0,
+                  ),
                   ExpansionPanelList(
                     expansionCallback: (panelIndex, isExpanded) {
                       setState(() {
@@ -380,47 +392,52 @@ class _FilterHomePageState extends ConsumerState<FilterHomePage> {
                       ),
                     ],
                   ),
-                  const Divider(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          height: 35,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          child: OutlinedButton(
-                            style: buttonStyleWithBordersideColor,
-                            onPressed: () {},
-                            child: Text(
-                              'Clear Filters',
-                              style: txtMedium.copyWith(
-                                color: AppColor.red,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                ],
+              ),
+            ),
+            const Divider(
+              color: Colors.grey,
+              height: 0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: 35,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    child: OutlinedButton(
+                      style: buttonStyleWithBordersideColor,
+                      onPressed: () {},
+                      child: Text(
+                        'Clear Filters',
+                        textAlign: TextAlign.center,
+                        style: txtMedium.copyWith(
+                          color: AppColor.red,
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 35,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          child: OutlinedButton(
-                            style: buttonStyleWithBordersideColor.copyWith(
-                              backgroundColor: MaterialStateProperty.all(
-                                AppColor.red,
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Text(
-                              'Show 4 Results',
-                              style: txtMedium.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 35,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    child: OutlinedButton(
+                      style: buttonStyleWithBordersideColor.copyWith(
+                        backgroundColor: MaterialStateProperty.all(
+                          AppColor.red,
                         ),
-                      ],
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'Show 4 Results',
+                        textAlign: TextAlign.center,
+                        style: txtMedium.copyWith(
+                          color: Colors.white,
+                          // fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ],

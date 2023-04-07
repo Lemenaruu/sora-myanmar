@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 import 'package:sora_myanmar/providers/route_provider.dart';
 
 import '../../constants/widgets_constants.dart';
@@ -80,10 +81,10 @@ class _HomeWifiRequestFormPageState
                   ),
                   SizedBox(
                     width: size.width * 0.2,
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Divider(
-                        color: Colors.grey,
+                        color: Colors.grey.shade400,
                       ),
                     ),
                   ),
@@ -137,9 +138,7 @@ class _HomeWifiRequestFormPageState
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Name(English)'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
@@ -148,9 +147,7 @@ class _HomeWifiRequestFormPageState
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Name(Katakana)'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
@@ -162,17 +159,13 @@ class _HomeWifiRequestFormPageState
                 controller: dateController,
                 decoration: inputDecoration.copyWith(
                   label: const Text('Birthday'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                   suffixIcon: IconButton(
-                      onPressed: () {
-                        pickDate();
-                      },
-                      icon: Icon(
-                        Icons.calendar_month_outlined,
-                        color: Colors.grey.shade600,
-                      )),
+                    onPressed: () {
+                      pickDate();
+                    },
+                    icon: SvgPicture.asset(SvgPic.calendar),
+                  ),
                 ),
                 // initialValue: 'Day - Month - Year',
               ),
@@ -202,24 +195,26 @@ class _HomeWifiRequestFormPageState
                         left: 30,
                         right: 30,
                         top: 40,
-                        child: SvgPicture.asset(
-                          'assets/svgs/gallery.svg',
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Positioned(
-                        left: 20,
-                        right: 20,
-                        bottom: 20,
-                        child: SizedBox(
-                          width: size.width * 0.42,
-                          child: Text(
-                            'Add Photo(Front)',
-                            style: txtMedium.copyWith(
-                              color: Colors.grey,
-                              fontSize: 10,
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SvgPicture.asset(
+                              SvgPic.gallery,
+                              color: Colors.grey.shade400,
                             ),
-                          ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Add Photo(Front)',
+                              textAlign: TextAlign.center,
+                              style: txtMedium.copyWith(
+                                color: Colors.grey.shade400,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -235,24 +230,26 @@ class _HomeWifiRequestFormPageState
                         left: 30,
                         right: 30,
                         top: 40,
-                        child: SvgPicture.asset(
-                          'assets/svgs/gallery.svg',
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Positioned(
-                        left: 20,
-                        right: 20,
-                        bottom: 20,
-                        child: SizedBox(
-                          width: size.width * 0.42,
-                          child: Text(
-                            'Add Photo(Back)',
-                            style: txtMedium.copyWith(
-                              color: Colors.grey,
-                              fontSize: 10,
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SvgPicture.asset(
+                              SvgPic.gallery,
+                              color: Colors.grey.shade400,
                             ),
-                          ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Add Photo(Back)',
+                              textAlign: TextAlign.center,
+                              style: txtMedium.copyWith(
+                                color: Colors.grey.shade400,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -282,24 +279,26 @@ class _HomeWifiRequestFormPageState
                     left: 30,
                     right: 30,
                     top: 40,
-                    child: SvgPicture.asset(
-                      'assets/svgs/gallery.svg',
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Positioned(
-                    left: size.width * 0.2,
-                    // right: size.width * 0.35,
-                    bottom: 20,
-                    child: SizedBox(
-                      width: size.width,
-                      child: Text(
-                        'Add Photo(First page with photo)',
-                        style: txtMedium.copyWith(
-                          color: Colors.grey,
-                          fontSize: 10,
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/svgs/gallery.svg',
+                          color: Colors.grey.shade400,
                         ),
-                      ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Add Photo(First page with photo)',
+                          textAlign: TextAlign.center,
+                          style: txtMedium.copyWith(
+                            color: Colors.grey.shade400,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -327,24 +326,26 @@ class _HomeWifiRequestFormPageState
                     left: 30,
                     right: 30,
                     top: 40,
-                    child: SvgPicture.asset(
-                      'assets/svgs/gallery.svg',
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Positioned(
-                    left: size.width * 0.3,
-                    // right: size.width * 0.35,
-                    bottom: 20,
-                    child: SizedBox(
-                      width: size.width * 0.42,
-                      child: Text(
-                        'Add Photo(First page)',
-                        style: txtMedium.copyWith(
-                          color: Colors.grey,
-                          fontSize: 10,
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/svgs/gallery.svg',
+                          color: Colors.grey.shade400,
                         ),
-                      ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Add Photo(First page)',
+                          textAlign: TextAlign.center,
+                          style: txtMedium.copyWith(
+                            color: Colors.grey.shade400,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

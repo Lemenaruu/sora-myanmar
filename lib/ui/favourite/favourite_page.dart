@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sora_myanmar/constants/widgets_constants.dart';
 
-class FavouritesPage extends StatelessWidget {
+import '../../constants/string_constants.dart';
+
+class FavouritesPage extends StatefulWidget {
   const FavouritesPage({super.key});
 
   @override
+  State<FavouritesPage> createState() => _FavouritesPageState();
+}
+
+class _FavouritesPageState extends State<FavouritesPage> {
+  int _productCount = 1;
+  @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -48,25 +58,30 @@ class FavouritesPage extends StatelessWidget {
                   child: Stack(
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.22,
+                        height: size.height * 0.2,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Flexible(
                                 child: Padding(
-                                  padding: EdgeInsets.only(right: 5.0),
+                                  padding: EdgeInsets.only(right: 10.0),
                                   child: Text(
                                     'Remax Earbug-R series 1',
                                     // maxLines: 1,
-                                    style: TextStyle(fontSize: 14),
+                                    style: txtLarge,
                                     // overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
+                              const SizedBox(
+                                height: 4,
+                              ),
                               const Text('#647957'),
+                              const SizedBox(
+                                height: 6,
+                              ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColor.red,
@@ -82,6 +97,7 @@ class FavouritesPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              const Spacer(),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -95,28 +111,39 @@ class FavouritesPage extends StatelessWidget {
                                     width: 70,
                                     height: 25,
                                     decoration: BoxDecoration(
-
-                                        // shape: BoxShape.circle,
-                                        // color: Colors.grey,
                                         borderRadius: BorderRadius.circular(20),
                                         border: Border.all(color: Colors.grey)),
-                                    // margin: const EdgeInsets.all(),
                                     child: Row(
-                                      mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
-                                      children: const [
-                                        Text(
-                                          '-',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _productCount != 0
+                                                  ? _productCount--
+                                                  : _productCount;
+                                            });
+                                          },
+                                          child: const Text(
+                                            '-',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
 
-                                        Text('1'),
-                                        Text(
-                                          '+',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
+                                        Text(_productCount.toString()),
+                                        GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _productCount++;
+                                            });
+                                          },
+                                          child: const Text(
+                                            '+',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                         // Icon(CupertinoIcons.add),
                                       ],
@@ -129,11 +156,11 @@ class FavouritesPage extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        right: 1,
-                        top: 1,
-                        child: Image.asset(
-                          'assets/images/close.png',
-                          height: 16,
+                        right: 0,
+                        top: 0,
+                        child: SvgPicture.asset(
+                          SvgPic.closeX,
+                          color: Colors.black54,
                         ),
                       ),
                     ],

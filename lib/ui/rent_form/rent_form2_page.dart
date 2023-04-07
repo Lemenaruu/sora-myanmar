@@ -99,9 +99,7 @@ class _RentForm2PageState extends ConsumerState<RentForm2Page> {
             TextFormField(
               decoration: inputDecoration.copyWith(
                 label: const Text('Mobile Number'),
-                labelStyle: txtMedium.copyWith(
-                  color: Colors.grey,
-                ),
+                labelStyle: txtMedium.copyWith(),
               ),
             ),
             const SizedBox(
@@ -115,9 +113,7 @@ class _RentForm2PageState extends ConsumerState<RentForm2Page> {
                   child: TextFormField(
                     decoration: inputDecoration.copyWith(
                       label: const Text('Unit/Room Number'),
-                      labelStyle: txtMedium.copyWith(
-                        color: Colors.grey,
-                      ),
+                      labelStyle: txtMedium.copyWith(),
                     ),
                   ),
                 ),
@@ -126,9 +122,7 @@ class _RentForm2PageState extends ConsumerState<RentForm2Page> {
                   child: TextFormField(
                     decoration: inputDecoration.copyWith(
                       label: const Text('Building/Apartment'),
-                      labelStyle: txtMedium.copyWith(
-                        color: Colors.grey,
-                      ),
+                      labelStyle: txtMedium.copyWith(),
                     ),
                   ),
                 ),
@@ -144,11 +138,10 @@ class _RentForm2PageState extends ConsumerState<RentForm2Page> {
                   width: size.width * 0.45,
                   child: TextFormField(
                     decoration: inputDecoration.copyWith(
+                      suffixIconColor: Colors.grey,
                       suffixIcon: const Icon(Icons.keyboard_arrow_down),
                       label: const Text('City/Town'),
-                      labelStyle: txtMedium.copyWith(
-                        color: Colors.grey,
-                      ),
+                      labelStyle: txtMedium.copyWith(),
                     ),
                   ),
                 ),
@@ -156,11 +149,10 @@ class _RentForm2PageState extends ConsumerState<RentForm2Page> {
                   width: size.width * 0.45,
                   child: TextFormField(
                     decoration: inputDecoration.copyWith(
+                      suffixIconColor: Colors.grey,
                       suffixIcon: const Icon(Icons.keyboard_arrow_down),
                       label: const Text('Prefecture'),
-                      labelStyle: txtMedium.copyWith(
-                        color: Colors.grey,
-                      ),
+                      labelStyle: txtMedium.copyWith(),
                     ),
                   ),
                 ),

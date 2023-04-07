@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 
 import '../../../constants/widgets_constants.dart';
 
@@ -13,11 +14,11 @@ class BlogHomeRentPage extends StatefulWidget {
 
 class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
   final PageController _pageController = PageController(initialPage: 0);
-  List<Color> colors = [
-    Colors.black,
-    Colors.yellow,
-    Colors.green,
-    Colors.teal,
+  List<String> imageList = [
+    "https://sora-mart.com/storage/info/636f832c62335_photo.jpg",
+    "https://sora-mart.com/storage/info/636f840674926_photo.jpg",
+    "https://sora-mart.com/storage/info/636f84b97b7e2_photo.jpg",
+    "https://sora-mart.com/storage/info/636f82a5d49d1_photo.jpg",
   ];
 
   bool isBookmark = false;
@@ -62,7 +63,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.network(
-                          "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+                          "https://sora-mart.com/storage/info/636f84b97b7e2_photo.jpg",
                           height: 25.0,
                           width: 25.0,
                           fit: BoxFit.cover,
@@ -73,19 +74,14 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       ),
                       const Text(
                         'Xfinity',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
                       )
                     ],
                   ),
-                  const Flexible(
-                    child: Text(
-                      'Sat, 1 Jan 2022',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
+                  Flexible(
+                    child: Text('Sat, 1 Jan 2022',
+                        style: txtMedium.copyWith(
+                          color: Colors.grey,
+                        )),
                   ),
                 ],
               ),
@@ -106,11 +102,14 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                           _activePage = page;
                         });
                       },
-                      itemCount: colors.length,
+                      itemCount: imageList.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ClipRRect(
-                          child: Container(
-                            color: colors[index % colors.length],
+                          child: Image.network(
+                            imageList[index],
+                            height: 25.0,
+                            width: 25.0,
+                            fit: BoxFit.cover,
                           ),
                         );
                         // colors[index % colors.length];
@@ -123,7 +122,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.shade100,
+                        color: Colors.grey.shade50,
                       ),
                       width: 120,
                       height: 40,
@@ -143,11 +142,14 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                                   child: isFavourite
                                       ? const Icon(
                                           CupertinoIcons.heart,
+                                          color: Colors.black,
                                           // size: 22,
+                                          size: 24,
                                         )
                                       : const Icon(
                                           CupertinoIcons.heart_fill,
                                           color: AppColor.red,
+                                          size: 24,
                                         ),
                                 ),
                                 const SizedBox(
@@ -170,11 +172,13 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                                 },
                                 child: isBookmark
                                     ? const Icon(
-                                        Icons.bookmark_outline,
+                                        CupertinoIcons.bookmark,
+                                        size: 24,
                                         // color: AppColor.red,
                                       )
                                     : const Icon(
-                                        Icons.bookmark,
+                                        CupertinoIcons.bookmark_fill,
+                                        size: 24,
                                         color: AppColor.red,
                                       )),
                           ],
@@ -192,7 +196,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List<Widget>.generate(
-                            colors.length,
+                            imageList.length,
                             (index) => InkWell(
                                   onTap: () {
                                     _pageController.animateToPage(index,
@@ -216,18 +220,29 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Rental Price - MMK 300,000 (apx)',
-                    style: TextStyle(),
+                    style: txtLarge.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Row(
-                    children: const [
-                      Icon(CupertinoIcons.location_solid),
-                      SizedBox(
-                        width: 15,
+                    children: [
+                      SvgPicture.asset(
+                        SvgPic.location,
+                        height: 22,
+                        color: Colors.black54,
                       ),
-                      Text('Address'),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Address',
+                        style: txtLarge.copyWith(fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -236,7 +251,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                   Row(
                     children: const [
                       CircleAvatar(
-                        radius: 4,
+                        radius: 3,
                         backgroundColor: Colors.red,
                       ),
                       SizedBox(
@@ -245,6 +260,8 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       Flexible(
                         child: Text(
                           'Nishi-ku, Yakohoma City,Kanagawa Pref.',
+                          maxLines: 2,
+                          style: txtMedium,
                         ),
                       ),
                     ],
@@ -255,7 +272,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                   Row(
                     children: const [
                       CircleAvatar(
-                        radius: 4,
+                        radius: 3,
                         backgroundColor: Colors.red,
                       ),
                       SizedBox(
@@ -264,6 +281,8 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       Flexible(
                         child: Text(
                           '1 min walk from Azabu-juban Sta.',
+                          maxLines: 2,
+                          style: txtMedium,
                         ),
                       ),
                     ],
@@ -274,7 +293,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                   Row(
                     children: const [
                       CircleAvatar(
-                        radius: 4,
+                        radius: 3,
                         backgroundColor: Colors.red,
                       ),
                       SizedBox(
@@ -283,6 +302,8 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       Flexible(
                         child: Text(
                           'Minato-ku, Tokyo/1LDK/44.7 m',
+                          maxLines: 2,
+                          style: txtMedium,
                         ),
                       ),
                     ],
@@ -296,12 +317,19 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
               child: Column(
                 children: [
                   Row(
-                    children: const [
-                      FaIcon(CupertinoIcons.building_2_fill),
-                      SizedBox(
-                        width: 15,
+                    children: [
+                      SvgPicture.asset(
+                        SvgPic.facilities,
+                        height: 24,
+                        color: Colors.black54,
                       ),
-                      Text('Facilities'),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Facilities',
+                        style: txtLarge.copyWith(fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -310,7 +338,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                   Row(
                     children: const [
                       CircleAvatar(
-                        radius: 4,
+                        radius: 3,
                         backgroundColor: Colors.red,
                       ),
                       SizedBox(
@@ -319,6 +347,8 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       Flexible(
                         child: Text(
                           '1 Room-Sharehouse',
+                          maxLines: 2,
+                          style: txtMedium,
                         ),
                       ),
                     ],
@@ -329,7 +359,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                   Row(
                     children: const [
                       CircleAvatar(
-                        radius: 4,
+                        radius: 3,
                         backgroundColor: Colors.red,
                       ),
                       SizedBox(
@@ -338,6 +368,8 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       Flexible(
                         child: Text(
                           '2 Beds, 1 Bath',
+                          maxLines: 2,
+                          style: txtMedium,
                         ),
                       ),
                     ],
@@ -346,9 +378,10 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                     height: 6,
                   ),
                   Row(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       CircleAvatar(
-                        radius: 4,
+                        radius: 3,
                         backgroundColor: Colors.red,
                       ),
                       SizedBox(
@@ -357,6 +390,8 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       Flexible(
                         child: Text(
                           'Air-Con,TV, Washing Machine, Wide Space Kitchen',
+                          maxLines: 2,
+                          style: txtMedium,
                         ),
                       ),
                     ],
@@ -364,7 +399,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                   Row(
                     children: const [
                       CircleAvatar(
-                        radius: 4,
+                        radius: 3,
                         backgroundColor: Colors.red,
                       ),
                       SizedBox(
@@ -373,6 +408,8 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       Flexible(
                         child: Text(
                           'Good Water, Good Electricity',
+                          maxLines: 2,
+                          style: txtMedium,
                         ),
                       ),
                     ],
@@ -398,6 +435,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                       child: const Flexible(
                         child: Text(
                           'Meet and ask anything you want to know before renting the house',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey,
@@ -416,6 +454,7 @@ class _BlogHomeRentPageState extends State<BlogHomeRentPage> {
                         onPressed: () {},
                         child: const Text(
                           'Request a Tour',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: AppColor.red,
