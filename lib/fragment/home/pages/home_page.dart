@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               // context.go("/otp");
-              context.pushNamed(mySubscriptions);
+              context.pushNamed(requestATourEachday);
             },
             icon: const Icon(
               CupertinoIcons.bell,

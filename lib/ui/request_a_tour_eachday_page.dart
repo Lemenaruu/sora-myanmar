@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,12 +20,21 @@ class RequestATourEachdayPage extends ConsumerStatefulWidget {
 class _RequestATourEachdayPageState
     extends ConsumerState<RequestATourEachdayPage> {
   Type selectedRadio = Type.eachDay;
-  final timeinput = TextEditingController();
-  bool _isChecked = false;
+  final pickStartTimeTEC = TextEditingController();
+  final pickEndTimeTEC = TextEditingController();
+
   TimeOfDay _timeOfDay = const TimeOfDay(hour: 8, minute: 30);
+  // bool _isChecked = false;
+  bool _isMonday = false;
+  bool _isTuesday = false;
+  bool _isWednesday = false;
+  bool _isThursday = true;
+  bool _isFriday = true;
+  bool _isSaturday = true;
+  bool _isSunday = true;
 
   // show time picker method
-  void _showTimePicker() {
+  void _showTimeStartPicker() {
     showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
@@ -32,9 +42,30 @@ class _RequestATourEachdayPageState
       setState(() {
         _timeOfDay = value!;
         final time = _timeOfDay.format(context).toString();
-        timeinput.text = time;
+        pickStartTimeTEC.text = time;
       });
     });
+  }
+
+  void _showTimeEndPicker() {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((value) {
+      setState(() {
+        _timeOfDay = value!;
+        final time = _timeOfDay.format(context).toString();
+        pickEndTimeTEC.text = time;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    pickEndTimeTEC.dispose();
+    pickStartTimeTEC.dispose();
+    super.dispose();
   }
 
   @override
@@ -52,9 +83,7 @@ class _RequestATourEachdayPageState
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Contact Name'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
@@ -63,9 +92,7 @@ class _RequestATourEachdayPageState
               TextFormField(
                 decoration: inputDecoration.copyWith(
                   label: const Text('Mobile Number'),
-                  labelStyle: txtMedium.copyWith(
-                    color: Colors.grey,
-                  ),
+                  labelStyle: txtMedium.copyWith(),
                 ),
               ),
               const SizedBox(
@@ -80,8 +107,8 @@ class _RequestATourEachdayPageState
               Text(
                 "Mr.John will follow up and contact you.",
                 style: txtMedium.copyWith(
-                  color: Colors.grey,
                   fontSize: 11,
+                  color: Colors.grey,
                 ),
               ),
               const SizedBox(
@@ -139,13 +166,14 @@ class _RequestATourEachdayPageState
                 children: [
                   Checkbox(
                     shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Colors.amber),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     activeColor: AppColor.red,
-                    value: _isChecked,
+                    value: _isMonday,
                     onChanged: (value) {
                       setState(() {
-                        _isChecked = !_isChecked;
+                        _isMonday = !_isMonday;
                       });
                     },
                   ),
@@ -160,40 +188,36 @@ class _RequestATourEachdayPageState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeStartPicker();
                       },
-                      controller: timeinput,
+                      controller: pickStartTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickStartTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeEndPicker();
                       },
-                      controller: timeinput,
+                      controller: pickEndTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickEndTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
@@ -209,10 +233,10 @@ class _RequestATourEachdayPageState
                       borderRadius: BorderRadius.circular(5),
                     ),
                     activeColor: AppColor.red,
-                    value: _isChecked,
+                    value: _isTuesday,
                     onChanged: (value) {
                       setState(() {
-                        _isChecked = !_isChecked;
+                        _isTuesday = !_isTuesday;
                       });
                     },
                   ),
@@ -227,38 +251,34 @@ class _RequestATourEachdayPageState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () {},
-                      controller: timeinput,
+                      controller: pickStartTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickStartTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeEndPicker();
                       },
-                      controller: timeinput,
+                      controller: pickEndTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickEndTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
@@ -274,10 +294,10 @@ class _RequestATourEachdayPageState
                       borderRadius: BorderRadius.circular(5),
                     ),
                     activeColor: AppColor.red,
-                    value: _isChecked,
+                    value: _isWednesday,
                     onChanged: (value) {
                       setState(() {
-                        _isChecked = !_isChecked;
+                        _isWednesday = !_isWednesday;
                       });
                     },
                   ),
@@ -292,40 +312,36 @@ class _RequestATourEachdayPageState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeStartPicker();
                       },
-                      controller: timeinput,
+                      controller: pickStartTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickStartTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeEndPicker();
                       },
-                      controller: timeinput,
+                      controller: pickEndTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickEndTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
@@ -341,10 +357,10 @@ class _RequestATourEachdayPageState
                       borderRadius: BorderRadius.circular(5),
                     ),
                     activeColor: AppColor.red,
-                    value: _isChecked,
+                    value: _isThursday,
                     onChanged: (value) {
                       setState(() {
-                        _isChecked = !_isChecked;
+                        _isThursday = !_isThursday;
                       });
                     },
                   ),
@@ -359,40 +375,36 @@ class _RequestATourEachdayPageState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeStartPicker();
                       },
-                      controller: timeinput,
+                      controller: pickStartTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickStartTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeEndPicker();
                       },
-                      controller: timeinput,
+                      controller: pickEndTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickEndTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
@@ -408,10 +420,10 @@ class _RequestATourEachdayPageState
                       borderRadius: BorderRadius.circular(5),
                     ),
                     activeColor: AppColor.red,
-                    value: _isChecked,
+                    value: _isFriday,
                     onChanged: (value) {
                       setState(() {
-                        _isChecked = !_isChecked;
+                        _isFriday = !_isFriday;
                       });
                     },
                   ),
@@ -426,40 +438,36 @@ class _RequestATourEachdayPageState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeStartPicker();
                       },
-                      controller: timeinput,
+                      controller: pickStartTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickStartTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeEndPicker();
                       },
-                      controller: timeinput,
+                      controller: pickEndTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickEndTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
@@ -475,10 +483,10 @@ class _RequestATourEachdayPageState
                       borderRadius: BorderRadius.circular(5),
                     ),
                     activeColor: AppColor.red,
-                    value: _isChecked,
+                    value: _isSaturday,
                     onChanged: (value) {
                       setState(() {
-                        _isChecked = !_isChecked;
+                        _isSaturday = !_isSaturday;
                       });
                     },
                   ),
@@ -493,40 +501,36 @@ class _RequestATourEachdayPageState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeStartPicker();
                       },
-                      controller: timeinput,
+                      controller: pickEndTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickEndTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeEndPicker();
                       },
-                      controller: timeinput,
+                      controller: pickStartTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickStartTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
@@ -542,10 +546,10 @@ class _RequestATourEachdayPageState
                       borderRadius: BorderRadius.circular(5),
                     ),
                     activeColor: AppColor.red,
-                    value: _isChecked,
+                    value: _isSunday,
                     onChanged: (value) {
                       setState(() {
-                        _isChecked = !_isChecked;
+                        _isSunday = !_isSunday;
                       });
                     },
                   ),
@@ -560,40 +564,36 @@ class _RequestATourEachdayPageState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeStartPicker();
                       },
-                      controller: timeinput,
+                      controller: pickStartTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('Start from'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickStartTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     child: TextFormField(
                       onTap: () async {
-                        _showTimePicker();
+                        _showTimeEndPicker();
                       },
-                      controller: timeinput,
+                      controller: pickEndTimeTEC,
                       decoration: inputDecoration.copyWith(
                         label: const Text('End in'),
-                        suffixIcon: Icon(Icons.watch_later_outlined,
-                            color: timeinput.text.isEmpty
+                        suffixIcon: Icon(CupertinoIcons.clock,
+                            color: pickEndTimeTEC.text.isEmpty
                                 ? Colors.grey
                                 : Colors.black),
-                        labelStyle: txtMedium.copyWith(
-                          color: Colors.grey,
-                        ),
+                        labelStyle: txtMedium.copyWith(),
                       ),
                     ),
                   ),
