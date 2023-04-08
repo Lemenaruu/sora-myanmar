@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sora_myanmar/constants/widgets_constants.dart';
 
 class SettingPage extends ConsumerStatefulWidget {
@@ -25,11 +26,56 @@ class _SettingPageState extends ConsumerState<SettingPage> {
               children: [
                 ListTile(
                   onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          title: Text(
+                            'Choose your language',
+                            style: txtLarge.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          content: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              OutlinedButton(
+                                style: buttonStyleWithBordersideColor,
+                                onPressed: () {},
+                                child: const Text(
+                                  'English',
+                                  style: txtLarge,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              OutlinedButton(
+                                style: buttonStyleWithBordersideColor,
+                                onPressed: () {},
+                                child: const Text(
+                                  'Myanmar',
+                                  style: txtLarge,
+                                ),
+                              )
+                              
+                            ],
+                          ),
+                        
+                          // actions: const [],
+                        );
+                      },
+                    );
                     // context.pushNamed(myAddresses);
                   },
                   title: const Text(
-                    'My Addresses',
-                    // style: txtMedium,
+                    'Language',
+                    style: txtLarge,
                   ),
                   trailing: FittedBox(
                     child: Row(
@@ -53,8 +99,8 @@ class _SettingPageState extends ConsumerState<SettingPage> {
                     // context.pushNamed(myAddresses);
                   },
                   title: const Text(
-                    'My Addresses',
-                    // style: txtMedium,
+                    'Currency',
+                    style: txtLarge,
                   ),
                   trailing: FittedBox(
                     child: Row(
@@ -77,7 +123,10 @@ class _SettingPageState extends ConsumerState<SettingPage> {
                   onTap: () {
                     // context.pushNamed(myOrders);
                   },
-                  title: const Text('My Orders'),
+                  title: const Text(
+                    'Change Password',
+                    style: txtLarge,
+                  ),
                   trailing: const Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 18,
@@ -88,11 +137,9 @@ class _SettingPageState extends ConsumerState<SettingPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Receive Push Information",
-                        style: txtMedium.copyWith(
-                          fontSize: 16,
-                        ),
+                        style: txtLarge,
                       ),
                       Transform.scale(
                         scale: 0.6,

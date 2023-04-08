@@ -3,14 +3,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
 import 'package:sora_myanmar/constants/api_constants.dart';
-import 'package:sora_myanmar/core/failure.dart';
 import 'package:sora_myanmar/models/login_api_response.dart';
 import 'package:sora_myanmar/models/verify_code_response.dart';
 
-import '../core/type_defs.dart';
 import '../models/register_api_response.dart';
 import '../models/user_model.dart';
 
@@ -19,7 +16,7 @@ final authServiceProvider = Provider((ref) => AuthService());
 class AuthService {
   String endpoint = ApiConstants.baseApiEndpoint;
 
-  FutureEither<LoginApiResponse?> loginWithEmail({
+  Future<LoginApiResponse?> loginWithEmail({
     required String email,
     required String password,
   }) async {
@@ -34,26 +31,25 @@ class AuthService {
         },
       );
       print(response.statusCode);
-      var data = json.decode(response.body);
-      print(LoginApiResponse.fromMap(data));
+      final body = json.decode(response.body);
+      final data = LoginApiResponse.fromMap(body);
+
+      print(data);
 
       if (response.statusCode == 200) {
-        return right(LoginApiResponse.fromMap(data));
+        return data.copyWith(token: data.token);
       } else {
-        return left(Failure('Credentials does not match!'));
+        return null;
       }
     } on Exception catch (e) {
-      return left(
-        Failure(
-          e.toString(),
-        ),
-      );
+      throw e.toString();
     } catch (e) {
-      return left(Failure(e.toString()));
+      e.toString();
     }
+    return null;
   }
 
-  FutureEither<RegisterApiResponse> register({
+  Future<RegisterApiResponse?> register({
     required String name,
     required String email,
     required String password,
@@ -64,23 +60,26 @@ class AuthService {
       final response = await http.post(
         url,
         body: {
-          "name": name,
+          "fullname": name,
           "email": email,
           "password": password,
         },
       );
-      print(response.statusCode);
-      var data = json.decode(response.body);
+      print("response.body ${response.body}");
+      final body = json.decode(response.body);
+      final data = RegisterApiResponse.fromMap(body);
+
       if (response.statusCode == 200) {
-        return right(RegisterApiResponse.fromMap(data));
+        return data;
       } else {
-        return left(Failure('The email has already been taken.'));
+        return null;
       }
     } on Exception catch (e) {
-      return left(Failure(e.toString()));
+      throw e.toString();
     } catch (e) {
-      return left(Failure(e.toString()));
+      e.toString();
     }
+    return null;
 
     // if (response.statusCode == 200 || response.statusCode == 201) {
     //   var data = json.decode(response.body);

@@ -70,7 +70,10 @@ class _FilterBlogHouseRentPageState
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Divider(),
+            const Divider(
+              height: 0,
+              color: Colors.grey,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -151,7 +154,10 @@ class _FilterBlogHouseRentPageState
                       ),
                     ],
                   ),
-                  const Divider(),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0,
+                  ),
                   ExpansionPanelList(
                     expansionCallback: (panelIndex, isExpanded) {
                       setState(() {
@@ -228,7 +234,10 @@ class _FilterBlogHouseRentPageState
                       ),
                     ],
                   ),
-                  const Divider(),
+                  const Divider(
+                    height: 0,
+                    color: Colors.grey,
+                  ),
                   ExpansionPanelList(
                     expansionCallback: (panelIndex, isExpanded) {
                       setState(() {
@@ -268,8 +277,8 @@ class _FilterBlogHouseRentPageState
                             RangeSlider(
                               min: 50000,
                               max: 1000000,
-                              activeColor: AppColor.red,
-                              divisions: 20,
+                              activeColor: Colors.red,
+                              // divisions: 20,
                               inactiveColor: Colors.grey,
                               labels: RangeLabels(
                                   "MMK: ${formatter.format(startval.toInt())}",
@@ -288,23 +297,28 @@ class _FilterBlogHouseRentPageState
                       ),
                     ],
                   ),
-                  const Divider(),
+                  const Divider(
+                    height: 0,
+                    color: Colors.grey,
+                  ),
                   ExpansionPanelList(
                     expansionCallback: (panelIndex, isExpanded) {
                       setState(() {
                         isExpandedRoomtype = !isExpandedRoomtype;
                       });
                     },
+
                     expandedHeaderPadding: EdgeInsets.zero,
                     // animationDuration: kThemeAnimationDuration,
                     elevation: 0,
+
                     children: [
                       ExpansionPanel(
                         headerBuilder: (BuildContext context, bool isExpanded) {
                           return const Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Color",
+                              "Room Type",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -363,47 +377,52 @@ class _FilterBlogHouseRentPageState
                       ),
                     ],
                   ),
-                  const Divider(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          height: 35,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          child: OutlinedButton(
-                            style: buttonStyleWithBordersideColor,
-                            onPressed: () {},
-                            child: Text(
-                              'Clear Filters',
-                              style: txtMedium.copyWith(
-                                color: AppColor.red,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                ],
+              ),
+            ),
+            const Divider(
+              height: 0,
+              color: Colors.grey,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: 35,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    child: OutlinedButton(
+                      style: buttonStyleWithBordersideColor,
+                      onPressed: () {},
+                      child: Text(
+                        'Clear Filters',
+                        textAlign: TextAlign.center,
+                        style: txtMedium.copyWith(
+                          color: AppColor.red,
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 35,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          child: OutlinedButton(
-                            style: buttonStyleWithBordersideColor.copyWith(
-                              backgroundColor: MaterialStateProperty.all(
-                                AppColor.red,
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Text(
-                              'Show 100 Results',
-                              style: txtMedium.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 35,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    child: OutlinedButton(
+                      style: buttonStyleWithBordersideColor.copyWith(
+                        backgroundColor: MaterialStateProperty.all(
+                          AppColor.red,
                         ),
-                      ],
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'Show 100 Results',
+                        textAlign: TextAlign.center,
+                        style: txtMedium.copyWith(
+                          color: Colors.white,
+                          // fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ],

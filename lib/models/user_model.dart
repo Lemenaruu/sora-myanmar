@@ -152,22 +152,26 @@ class User {
       lastLogin: map['lastLogin'] != null ? map['lastLogin'] as String : null,
       role: map['role'] != null ? map['role'] as String : null,
       createdBy: map['createdBy'] != null ? map['createdBy'] as String : null,
-      createdWhen: map['createdWhen'] != null ? map['createdWhen'] as String : null,
+      createdWhen:
+          map['createdWhen'] != null ? map['createdWhen'] as String : null,
       updatedBy: map['updatedBy'] != null ? map['updatedBy'] as String : null,
-      updatedWhen: map['updatedWhen'] != null ? map['updatedWhen'] as String : null,
+      updatedWhen:
+          map['updatedWhen'] != null ? map['updatedWhen'] as String : null,
       status: map['status'] != null ? map['status'] as int : null,
       isReset: map['isReset'] as dynamic,
       dob: map['dob'] != null ? map['dob'] as String : null,
       gender: map['gender'] != null ? map['gender'] as String : null,
       profilPic: map['profilPic'] != null ? map['profilPic'] as String : null,
-      secreteCode: map['secreteCode'] != null ? map['secreteCode'] as String : null,
+      secreteCode:
+          map['secreteCode'] != null ? map['secreteCode'] as String : null,
       roomId: map['roomId'] != null ? map['roomId'] as String : null,
       isGuest: map['isGuest'] != null ? map['isGuest'] as int : null,
       isBroker: map['isBroker'] != null ? map['isBroker'] as int : null,
       hash: map['hash'] as dynamic,
       googleId: map['googleId'] != null ? map['googleId'] as String : null,
       fbId: map['fbId'] != null ? map['fbId'] as String : null,
-      referralCode: map['referralCode'] != null ? map['referralCode'] as String : null,
+      referralCode:
+          map['referralCode'] != null ? map['referralCode'] as String : null,
       mPoint: map['mPoint'] != null ? map['mPoint'] as String : null,
     );
   }
@@ -180,61 +184,60 @@ class User {
   @override
   bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.guid == guid &&
-      other.fullname == fullname &&
-      other.email == email &&
-      other.phNo == phNo &&
-      other.isActive == isActive &&
-      other.lastLogin == lastLogin &&
-      other.role == role &&
-      other.createdBy == createdBy &&
-      other.createdWhen == createdWhen &&
-      other.updatedBy == updatedBy &&
-      other.updatedWhen == updatedWhen &&
-      other.status == status &&
-      other.isReset == isReset &&
-      other.dob == dob &&
-      other.gender == gender &&
-      other.profilPic == profilPic &&
-      other.secreteCode == secreteCode &&
-      other.roomId == roomId &&
-      other.isGuest == isGuest &&
-      other.isBroker == isBroker &&
-      other.hash == hash &&
-      other.googleId == googleId &&
-      other.fbId == fbId &&
-      other.referralCode == referralCode &&
-      other.mPoint == mPoint;
+
+    return other.guid == guid &&
+        other.fullname == fullname &&
+        other.email == email &&
+        other.phNo == phNo &&
+        other.isActive == isActive &&
+        other.lastLogin == lastLogin &&
+        other.role == role &&
+        other.createdBy == createdBy &&
+        other.createdWhen == createdWhen &&
+        other.updatedBy == updatedBy &&
+        other.updatedWhen == updatedWhen &&
+        other.status == status &&
+        other.isReset == isReset &&
+        other.dob == dob &&
+        other.gender == gender &&
+        other.profilPic == profilPic &&
+        other.secreteCode == secreteCode &&
+        other.roomId == roomId &&
+        other.isGuest == isGuest &&
+        other.isBroker == isBroker &&
+        other.hash == hash &&
+        other.googleId == googleId &&
+        other.fbId == fbId &&
+        other.referralCode == referralCode &&
+        other.mPoint == mPoint;
   }
 
   @override
   int get hashCode {
     return guid.hashCode ^
-      fullname.hashCode ^
-      email.hashCode ^
-      phNo.hashCode ^
-      isActive.hashCode ^
-      lastLogin.hashCode ^
-      role.hashCode ^
-      createdBy.hashCode ^
-      createdWhen.hashCode ^
-      updatedBy.hashCode ^
-      updatedWhen.hashCode ^
-      status.hashCode ^
-      isReset.hashCode ^
-      dob.hashCode ^
-      gender.hashCode ^
-      profilPic.hashCode ^
-      secreteCode.hashCode ^
-      roomId.hashCode ^
-      isGuest.hashCode ^
-      isBroker.hashCode ^
-      hash.hashCode ^
-      googleId.hashCode ^
-      fbId.hashCode ^
-      referralCode.hashCode ^
-      mPoint.hashCode;
+        fullname.hashCode ^
+        email.hashCode ^
+        phNo.hashCode ^
+        isActive.hashCode ^
+        lastLogin.hashCode ^
+        role.hashCode ^
+        createdBy.hashCode ^
+        createdWhen.hashCode ^
+        updatedBy.hashCode ^
+        updatedWhen.hashCode ^
+        status.hashCode ^
+        isReset.hashCode ^
+        dob.hashCode ^
+        gender.hashCode ^
+        profilPic.hashCode ^
+        secreteCode.hashCode ^
+        roomId.hashCode ^
+        isGuest.hashCode ^
+        isBroker.hashCode ^
+        hash.hashCode ^
+        googleId.hashCode ^
+        fbId.hashCode ^
+        referralCode.hashCode ^
+        mPoint.hashCode;
   }
 }

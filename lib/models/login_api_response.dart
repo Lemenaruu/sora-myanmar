@@ -8,13 +8,13 @@ class LoginApiResponse {
   bool? success;
   String? token;
   String? message;
-  User? data;
+  User? user;
   int? status;
   LoginApiResponse({
     this.success,
     this.token,
     this.message,
-    this.data,
+    this.user,
     this.status,
   });
 
@@ -23,14 +23,14 @@ class LoginApiResponse {
     bool? success,
     String? token,
     String? message,
-    User? data,
+    User? user,
     int? status,
   }) {
     return LoginApiResponse(
       success: success ?? this.success,
       token: token ?? this.token,
       message: message ?? this.message,
-      data: data ?? this.data,
+      user: user ?? this.user,
       status: status ?? this.status,
     );
   }
@@ -40,7 +40,7 @@ class LoginApiResponse {
       'success': success,
       'token': token,
       'message': message,
-      'data': data?.toMap(),
+      'user': user?.toMap(),
       'status': status,
     };
   }
@@ -50,14 +50,14 @@ class LoginApiResponse {
       success: map['success'] != null ? map['success'] as bool : null,
       token: map['token'] != null ? map['token'] as String : null,
       message: map['message'] != null ? map['message'] as String : null,
-      data: map['data'] != null ? User.fromMap(map['data'] as Map<String,dynamic>) : null,
+      user: map['user'] != null ? User.fromMap(map['user'] as Map<String,dynamic>) : null,
       status: map['status'] != null ? map['status'] as int : null,
     );
   }
 
   @override
   String toString() {
-    return 'LoginApiResponse(success: $success, token: $token, message: $message, data: $data, status: $status)';
+    return 'LoginApiResponse(success: $success, token: $token, message: $message, user: $user, status: $status)';
   }
 
   @override
@@ -68,7 +68,7 @@ class LoginApiResponse {
       other.success == success &&
       other.token == token &&
       other.message == message &&
-      other.data == data &&
+      other.user == user &&
       other.status == status;
   }
 
@@ -77,7 +77,7 @@ class LoginApiResponse {
     return success.hashCode ^
       token.hashCode ^
       message.hashCode ^
-      data.hashCode ^
+      user.hashCode ^
       status.hashCode;
   }
 }

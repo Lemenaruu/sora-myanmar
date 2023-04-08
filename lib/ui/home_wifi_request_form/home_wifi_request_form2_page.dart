@@ -19,7 +19,7 @@ class HomeWifiRequestForm2Page extends ConsumerStatefulWidget {
 class _HomeWifiRequestForm2PageState
     extends ConsumerState<HomeWifiRequestForm2Page> {
   SubscriptinPlan selectedRadio = SubscriptinPlan.monthly;
-  
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -120,6 +120,7 @@ class _HomeWifiRequestForm2PageState
                   width: size.width * 0.45,
                   child: TextFormField(
                     decoration: inputDecoration.copyWith(
+                      suffixIconColor: Colors.grey,
                       suffixIcon: const Icon(Icons.keyboard_arrow_down),
                       label: const Text('City/Town'),
                       labelStyle: txtMedium.copyWith(
@@ -132,6 +133,7 @@ class _HomeWifiRequestForm2PageState
                   width: size.width * 0.45,
                   child: TextFormField(
                     decoration: inputDecoration.copyWith(
+                      suffixIconColor: Colors.grey,
                       suffixIcon: const Icon(Icons.keyboard_arrow_down),
                       label: const Text('Prefecture'),
                       labelStyle: txtMedium.copyWith(

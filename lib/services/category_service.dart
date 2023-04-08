@@ -39,7 +39,7 @@ class CategoryService {
       final category = Category.fromJson(data);
       return category;
     } else {
-      throw Exception(response.reasonPhrase);
+      throw Exception();
     }
   }
 }

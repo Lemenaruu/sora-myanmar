@@ -87,20 +87,41 @@ class BlogJobsPage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+                // Positioned(
+                //   bottom: 50,
+                //   child: ElevatedButton(
+                //       style: ElevatedButton.styleFrom(
+                //         backgroundColor: AppColor.red,
+                //         shape: const RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.only(
+                //               bottomRight: Radius.circular(30)),
+                //         ),
+                //       ),
+                //       onPressed: () {},
+                //       child: const Text(
+                //         'UI/UX Designer',
+                //       )),
+                // ),
                 Positioned(
-                  bottom: 50,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColor.red,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(30)),
-                        ),
+                  bottom: 70,
+                  child: CustomPaint(
+                    painter: MyParallelogram(),
+                    // child: const Text(
+                    //   'UI/UX Designer',
+                    // ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 45,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      'UI/UX Designer',
+                      style: txtMedium.copyWith(
+                        color: Colors.white,
                       ),
-                      onPressed: () {},
-                      child: const Text(
-                        'UI/UX Designer',
-                      )),
+                    ),
+                  ),
                 ),
                 Positioned(
                   top: 10,
@@ -148,16 +169,9 @@ class BlogJobsPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Column(
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.bookmark_outlined,
-                                  color: AppColor.red,
-                                ),
-                              ),
-                            ],
+                          const Icon(
+                            Icons.bookmark_outlined,
+                            color: AppColor.red,
                           ),
                         ],
                       ),

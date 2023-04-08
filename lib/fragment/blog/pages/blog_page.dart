@@ -1,32 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sora_myanmar/constants/widgets_constants.dart';
 import 'package:sora_myanmar/fragment/blog/widgets/blog_all_widget.dart';
 import 'package:sora_myanmar/fragment/blog/widgets/blog_home_wifi_widget.dart';
 
-class BlogPage extends StatefulWidget {
+import '../widgets/Jobs_widget.dart';
+
+class BlogPage extends ConsumerStatefulWidget {
   const BlogPage({super.key});
 
   @override
-  State<BlogPage> createState() => _BlogPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _BlogPageState();
 }
 
-class _BlogPageState extends State<BlogPage> {
-  PageController page = PageController(initialPage: 0);
-
+class _BlogPageState extends ConsumerState<BlogPage> {
   bool isAllClicked = false;
   bool isHomeWifi = false;
 
   List<String> title = [
     'All',
     'Jobs',
-    'House',
+    'House Rent',
     'Simcard/Wifi',
     'Mobile',
   ];
   List<dynamic> blogCategories = [
     const BlogAllWidget(),
-    const SizedBox(),
+    const JobsWidget(),
     const SizedBox(),
     const BlogHomeWifiWidget(),
     const SizedBox(),
@@ -38,16 +39,15 @@ class _BlogPageState extends State<BlogPage> {
 
   int _selectedButton = 0;
 
-  int selectedButton(int index) {
+  void selectedButton(BuildContext context, int index) {
     _selectedButton = index;
-    setState(() {
-      // blogCategories[index++];
 
-      // changedColor = !changedColor;
-    });
-
-    return _selectedButton;
+    setState(() {});
   }
+
+  // selected(BuildContext context, int index) {
+  //   return blogCategories[index];
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +103,7 @@ class _BlogPageState extends State<BlogPage> {
                           ),
                         ),
                         onPressed: () {
-                          selectedButton(index);
+                          selectedButton(context, index);
                           // context.pushNamed(blogHomewifi);
                           // setState(() {});
                         },
@@ -137,27 +137,34 @@ class _BlogPageState extends State<BlogPage> {
                     print("_selectedButton   $_selectedButton and $index");
                     switch (_selectedButton) {
                       case 0:
-                        return blogCategories[0];
+                        return blogCategories[_selectedButton];
+                        // selected(context, _selectedButton);
 
                         break;
+
                       case 1:
-                        return blogCategories[1];
+                        return blogCategories[_selectedButton];
+                        // selected(context, _selectedButton);
 
                         break;
                       case 2:
-                        return blogCategories[2];
+                        return blogCategories[_selectedButton];
+                        // selected(context, _selectedButton);
 
                         break;
                       case 3:
-                        return blogCategories[3];
+                        return blogCategories[_selectedButton];
+                        // selected(context, _selectedButton);
 
                         break;
                       case 4:
-                        return blogCategories[4];
+                        return blogCategories[_selectedButton];
+                        // selected(context, _selectedButton);
 
                         break;
+
                       default:
-                        {}
+                        break;
                     }
                     return null;
                     // (_selectedButton == index &&

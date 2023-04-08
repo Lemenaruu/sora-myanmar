@@ -24,15 +24,16 @@ class TermsAndConditionsPage extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   '1.Terms of Service',
-                  style: txtMedium.copyWith(fontWeight: FontWeight.bold),
+                  style: txtLarge,
+                  // txtMedium.copyWith(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
-                const Text(
+                Text(
                   'A terms of service agreement is supposed to be a flexible document that adapts with your business. You should establish a process for how you will update your users about any changes you make to your policy.',
                   style: txtMedium,
                 ),
@@ -43,15 +44,16 @@ class TermsAndConditionsPage extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   '2.General Use',
-                  style: txtMedium.copyWith(fontWeight: FontWeight.bold),
+                  style: txtLarge,
+                  //  txtMedium.copyWith(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
-                const Text(
+                Text(
                   'A terms of service agreement is supposed to be a flexible document that adapts with your business. You should establish a process for how you will update your users about any changes you make to your policy.',
                   style: txtMedium,
                 ),
@@ -62,15 +64,16 @@ class TermsAndConditionsPage extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   '3.Legal Conditions',
-                  style: txtMedium.copyWith(fontWeight: FontWeight.bold),
+                  style: txtLarge,
+                  //  txtMedium.copyWith(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
-                const Text(
+                Text(
                   'A terms of service agreement is supposed to be a flexible document that adapts with your business. You should establish a process for how you will update your users about any changes you make to your policy.',
                   style: txtMedium,
                 ),

@@ -10,6 +10,7 @@ class SignInSignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -19,32 +20,32 @@ class SignInSignUpPage extends StatelessWidget {
             children: [
               Center(
                 child: Column(
-                  children: const [
+                  children: [
                     SizedBox(
-                      height: 30,
+                      height: size.height * 0.16,
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundColor: Colors.amber,
                       radius: 50,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
-                    Text(
+                    const Text(
                       'Welcome',
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
-                    Center(
+                    const Center(
                       child: Text(
                         'Sign up to get started and experience',
                         style: txtMedium,
                       ),
                     ),
-                    Text(
+                    const Text(
                       'great shopping deals',
                       style: txtMedium,
                     ),
@@ -72,7 +73,9 @@ class SignInSignUpPage extends StatelessWidget {
                   ),
                   OutlinedButton(
                     style: buttonStyleWithBackgroundColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed(signUp);
+                    },
                     child: const Text(
                       'CREATE AN ACCOUNT',
                       style: TextStyle(

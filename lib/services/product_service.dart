@@ -20,13 +20,12 @@ class ProductService {
     if (response.statusCode == 200) {
       var list = json.decode(response.body)['data']['products'] as List;
 
-    log(list.length.toString());
-      final products = list.map((data){
-        final a= Product.fromJson(data);
+      final products = list.map((data) {
+        final a = Product.fromJson(data);
         log(a.toString());
         return a;
-          }).toList();
-      log(products.toString());
+      }).toList();
+
       return products;
     } else {
       throw Exception(response.reasonPhrase);

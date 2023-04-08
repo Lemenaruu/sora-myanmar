@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 
 import '../../constants/widgets_constants.dart';
 
@@ -13,9 +15,9 @@ class OrderFailedPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Image.asset(
-              "assets/images/close.png",
-              height: 16,
+            icon: SvgPicture.asset(
+              SvgPic.closeX,
+              color: Colors.black,
             ),
           ),
         ],
@@ -31,18 +33,18 @@ class OrderFailedPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: CircleAvatar(
                     backgroundColor: const Color.fromARGB(255, 246, 221, 215),
-                    radius: 70,
+                    radius: 60,
                     child: CircleAvatar(
-                      radius: 60,
+                      radius: 50,
                       backgroundColor: const Color.fromARGB(36, 241, 58, 68),
                       child: CircleAvatar(
                         backgroundColor: AppColor.red,
-                        radius: 50,
+                        radius: 40,
                         child: SizedBox(
                           height: 30,
                           width: 30,
-                          child: Image.asset(
-                            "assets/images/exclamation.png",
+                          child: SvgPicture.asset(
+                            SvgPic.exclamationMark,
                             color: Colors.white,
                           ),
                         ),
@@ -56,7 +58,7 @@ class OrderFailedPage extends StatelessWidget {
                 const Text(
                   'Order Failed!',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -64,6 +66,7 @@ class OrderFailedPage extends StatelessWidget {
                   height: 20,
                 ),
                 RichText(
+                  textAlign: TextAlign.center,
                   text: const TextSpan(
                     children: [
                       TextSpan(
@@ -72,7 +75,8 @@ class OrderFailedPage extends StatelessWidget {
                           fontFamily: 'poppin',
                           // decoration: TextDecoration.underline,
                           color: Colors.black,
-                          // fontWeight: FontWeight.bold,
+
+                          fontSize: 12,
                         ),
                       ),
                       TextSpan(
@@ -81,6 +85,7 @@ class OrderFailedPage extends StatelessWidget {
                           fontFamily: 'poppin',
                           decoration: TextDecoration.underline,
                           color: AppColor.red,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -90,7 +95,7 @@ class OrderFailedPage extends StatelessWidget {
                           fontFamily: 'poppin',
                           // decoration: TextDecoration.underline,
                           color: Colors.black,
-                          // fontWeight: FontWeight.bold,
+                          fontSize: 12,
                         ),
                       ),
                     ],
@@ -98,20 +103,15 @@ class OrderFailedPage extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                OutlinedButton(
-                  style: buttonStyleWithBackgroundColor,
-                  onPressed: () {},
-                  child: const Text(
-                    'BACK TO HOME',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+            OutlinedButton(
+              style: buttonStyleWithBackgroundColor,
+              onPressed: () {},
+              child: const Text(
+                'BACK TO HOME',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
-              ],
+              ),
             ),
           ],
         ),

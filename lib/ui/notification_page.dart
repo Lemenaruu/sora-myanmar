@@ -1,88 +1,123 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sora_myanmar/constants/widgets_constants.dart';
+
+import '../constants/string_constants.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           'Notification',
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Column(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  // color: Colors.amberAccent,
-                  height: MediaQuery.of(context).size.height * 0.12,
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Column(
+            children: [
+              ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Flexible(
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        // color: Colors.amberAccent,
+                        height: MediaQuery.of(context).size.height * 0.12,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Package at your doorstep!',
-                              style: txtMedium.copyWith(
-                                fontWeight: FontWeight.bold,
+                            Flexible(
+                              child: Column(
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Package at your doorstep!',
+                                    style: txtMedium.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Delivery - Peter',
+                                    style: txtMedium.copyWith(
+                                      fontSize: 11,
+                                      color: Colors.grey.shade400,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Text(
+                                    'We have left a package at your doorstep ,pleases check it out!',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: txtMedium.copyWith(
+                                      color: Colors.grey.shade700,
+                                      fontSize: 11,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Text(
-                              'Delivery - Peter',
-                              style: txtMedium.copyWith(
-                                fontSize: 12,
-                                color: Colors.grey.shade400,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              'We have left a package at your doorstep ,pleases check it out!',
-                              style: txtMedium.copyWith(
-                                color: Colors.grey.shade700,
-                              ),
+                            Stack(
+                              children: [
+                                Container(
+                                  width: size.width * 0.25,
+                                  height: size.width * 0.25,
+                                  color: Colors.grey.shade100,
+                                  child: const ClipRRect(
+                                    child: Text(''),
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: size.width * 0.25 - 54,
+                                  left: size.width * 0.25 - 54,
+                                  child: SvgPicture.asset(
+                                    SvgPic.boxPackage,
+                                    color: Colors.grey,
+                                    fit: BoxFit.cover,
+                                    height: 36,
+                                    width: 36,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
-                      Container(
-                        // width: MediaQuery.of(context).size.width * 0.25,
-                        // height: MediaQuery.of(context).size.height * 0.13,
-                        color: Colors.grey.shade100,
-                        child: ClipRRect(
-                          child: Image.asset(
-                            "assets/images/box.png",
-                            fit: BoxFit.none,
-                            color: Colors.grey,
-                            width: MediaQuery.of(context).size.width * 0.25,
-                            height: MediaQuery.of(context).size.height * 0.13,
-                          ),
+                      Text(
+                        "2 min ago",
+                        style: txtMedium.copyWith(
+                          fontSize: 11,
+                          color: Colors.grey.shade400,
                         ),
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Divider(
+                        height: 1,
+                        color: Colors.grey,
+                      ),
                     ],
-                  ),
-                ),
-                const Text(
-                  "Thu, 30 Dec, 2022",
-                  style: txtMedium,
-                ),
-              ],
-            ),
-            const Divider(
-              thickness: 2,
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 
 import '../../constants/widgets_constants.dart';
 
@@ -13,9 +15,8 @@ class OrderCompletedPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Image.asset(
-              "assets/images/close.png",
-              height: 16,
+            icon: SvgPicture.asset(
+              SvgPic.closeX,
             ),
           ),
         ],
@@ -31,13 +32,13 @@ class OrderCompletedPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: CircleAvatar(
                     backgroundColor: Color.fromARGB(255, 245, 238, 211),
-                    radius: 70,
+                    radius: 60,
                     child: CircleAvatar(
-                      radius: 60,
+                      radius: 50,
                       backgroundColor: Color.fromARGB(246, 246, 229, 204),
                       child: CircleAvatar(
                         backgroundColor: Colors.orange,
-                        radius: 50,
+                        radius: 40,
                         child: Icon(
                           Icons.check,
                           color: Colors.white,
@@ -51,9 +52,9 @@ class OrderCompletedPage extends StatelessWidget {
                   height: 30,
                 ),
                 const Text(
-                  'Order Completed!',
+                  'Order Completed !',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -61,24 +62,23 @@ class OrderCompletedPage extends StatelessWidget {
                   height: 20,
                 ),
                 RichText(
+                  textAlign: TextAlign.center,
                   text: const TextSpan(
                     children: [
                       TextSpan(
                         text: "Your order #119977351 has been placed. You can ",
                         style: TextStyle(
                           fontFamily: 'poppin',
-                          // decoration: TextDecoration.underline,
+                          fontSize: 12,
                           color: Colors.black,
-                          // fontWeight: FontWeight.bold,
                         ),
                       ),
                       TextSpan(
                         text: "see the status of the order at any time.",
                         style: TextStyle(
                           fontFamily: 'poppin',
-                          // decoration: TextDecoration.underline,
+                          fontSize: 12,
                           color: Colors.black,
-                          // fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],

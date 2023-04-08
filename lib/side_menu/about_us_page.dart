@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 import 'package:sora_myanmar/constants/widgets_constants.dart';
 
 class AboutUsPage extends ConsumerStatefulWidget {
@@ -46,8 +47,10 @@ class _AboutUsPageState extends ConsumerState<AboutUsPage> {
                           Row(
                             children: [
                               IconButton(
-                                icon: const Icon(
-                                  Icons.menu_rounded,
+                                icon: SvgPicture.asset(
+                                  SvgPic.menuRight,
+                                  color: Colors.white,
+                                  height: 28,
                                 ),
                                 onPressed: () {
                                   context.pop();
@@ -63,10 +66,6 @@ class _AboutUsPageState extends ConsumerState<AboutUsPage> {
                             children: const [
                               Badge(
                                 largeSize: 14,
-                                // alignment: AlignmentDirectional.lerp(
-                                //     AlignmentDirectional.topEnd(),
-                                //     AlignmentDirectional.center,
-                                //     20),
                                 backgroundColor: AppColor.red,
                                 label: Text('0'),
                                 textStyle: txtMedium,
@@ -77,10 +76,6 @@ class _AboutUsPageState extends ConsumerState<AboutUsPage> {
                               ),
                               Badge(
                                 largeSize: 14,
-                                // alignment: AlignmentDirectional.lerp(
-                                //     AlignmentDirectional.topEnd(),
-                                //     AlignmentDirectional.center,
-                                //     20),
                                 backgroundColor: AppColor.red,
                                 label: Text('0'),
                                 textStyle: txtMedium,
@@ -91,10 +86,6 @@ class _AboutUsPageState extends ConsumerState<AboutUsPage> {
                               ),
                               Badge(
                                 largeSize: 14,
-                                // alignment: AlignmentDirectional.lerp(
-                                //     AlignmentDirectional.topEnd(),
-                                //     AlignmentDirectional.center,
-                                //     20),
                                 backgroundColor: AppColor.red,
                                 label: Text('0'),
                                 textStyle: txtMedium,

@@ -4,8 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sora_myanmar/constants/widgets_constants.dart';
 import 'package:sora_myanmar/providers/bottom_navigation_provider.dart';
-import 'package:stylish_bottom_bar/model/bar_items.dart';
-import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
 class ScaffoldWithBottomNavBar extends ConsumerStatefulWidget {
   const ScaffoldWithBottomNavBar({Key? key, required this.child})
@@ -20,99 +18,91 @@ class ScaffoldWithBottomNavBar extends ConsumerStatefulWidget {
 final tabs = [
   ScaffoldWithNavBarTabItem(
     initialLocation: '/home',
-    icon: SvgPicture.asset(
-      "assets/svgs/home_outlined.svg",
-      // color: AppColor.red,
-    ),
-    activeIcon: SvgPicture.asset(
-      "assets/svgs/home.svg",
-      color: AppColor.red,
-    ),
-    label: const Text(
-      'Home',
-      style: TextStyle(
-        color: AppColor.red,
-        fontSize: 12,
+    icon: Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: SvgPicture.asset(
+        "assets/svgs/home_outlined.svg",
+        height: 22,
+        // color: AppColor.red,
       ),
     ),
+    activeIcon: Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: SvgPicture.asset(
+        "assets/svgs/home.svg",
+        color: AppColor.red,
+        height: 22,
+      ),
+    ),
+    label: 'Home',
+    backgroundColor: null,
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/blog',
-    icon: SizedBox(
-      height: 25,
-      width: 24,
+    icon: Padding(
+      padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
         "assets/svgs/compass_outlined1.svg",
+        height: 22,
         // color: AppColor.red,
         // fit: BoxFit.fitWidth,
       ),
     ),
-    activeIcon: SvgPicture.asset(
-      "assets/svgs/compass.svg",
-      color: AppColor.red,
-    ),
-    label: const Text(
-      'Blog',
-      style: TextStyle(
+    activeIcon: Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: SvgPicture.asset(
+        "assets/svgs/compass.svg",
         color: AppColor.red,
-        fontSize: 12,
+        height: 22,
       ),
     ),
+    label: 'Blog',
+    backgroundColor: null,
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/cart',
-    icon: SizedBox(
-      height: 29,
-      width: 28,
+    icon: Padding(
+      padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
-        "assets/svgs/basket_outlined.svg",
+        "assets/svgs/cart.svg",
         // color: AppColor.red,
+        height: 23,
       ),
     ),
-    activeIcon: SizedBox(
-      height: 30,
-      width: 33,
+    activeIcon: Padding(
+      padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
-        "assets/svgs/basket.svg",
+        "assets/svgs/cart_filled.svg",
         color: AppColor.red,
+        height: 23,
       ),
     ),
-    label: const Text(
-      'Cart',
-      style: TextStyle(
-        color: AppColor.red,
-        fontSize: 12,
-      ),
-    ),
+    label: 'Cart',
+    backgroundColor: null,
   ),
   ScaffoldWithNavBarTabItem(
     initialLocation: '/profile',
-    icon: SizedBox(
-      height: 20,
-      width: 20,
+    icon: Padding(
+      padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
         "assets/svgs/user.svg",
+        height: 20,
         // fit: BoxFit.cover,
         // color: AppColor.red,
         // fit: BoxFit.fitHeight,
       ),
     ),
-    activeIcon: SizedBox(
-      height: 20,
-      width: 20,
+    activeIcon: Padding(
+      padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
         "assets/svgs/user_outlined.svg",
         color: AppColor.red,
+        height: 20,
         // fit: BoxFit.cover,
       ),
     ),
-    label: const Text(
-      'Profile',
-      style: TextStyle(
-        color: AppColor.red,
-        fontSize: 12,
-      ),
-    ),
+    label: 'Profile',
+    backgroundColor: null,
   ),
 ];
 
@@ -153,48 +143,45 @@ class _ScaffoldWithBottomNavBarState
       //   key: _key,
       // ),
       // backgroundColor: Colors.white,
-      bottomNavigationBar: StylishBottomBar(
+      bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey.shade100,
-        elevation: 0,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        elevation: 1,
+        // fixedColor: AppColor.red,
+
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColor.red,
+        unselectedItemColor: Colors.black,
+
+        selectedLabelStyle: const TextStyle(
+          fontSize: 10,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 10,
+        ),
 
         currentIndex: currentPosition,
         onTap: (index) => _onItemTapped(context, index),
-        // currentIndex: currentPosition,
-        // onTap: (index) {
-        //   setState(() {
-        //     currentPosition = index;
-        //   });
-        // },
 
         items: tabs,
-        option: BubbleBarOptions(
-          bubbleFillStyle: BubbleFillStyle.fill,
-          inkEffect: false,
-          inkColor: Colors.white,
-          // padding: const EdgeInsets.all(20),
-
-          barStyle: BubbleBarStyle.vertical,
-
-          opacity: 0.0,
-          unselectedIconColor: Colors.black,
-          // iconSize: 20,
-        ),
-        // hasNotch: true,
       ),
     );
   }
 }
 
-class ScaffoldWithNavBarTabItem extends BottomBarItem {
+class ScaffoldWithNavBarTabItem extends BottomNavigationBarItem {
   ScaffoldWithNavBarTabItem(
       {required this.initialLocation,
       required Widget icon,
       required Widget activeIcon,
-      Widget? label})
+      required Color? backgroundColor,
+      String? label})
       : super(
           icon: icon,
-          title: label,
-          selectedIcon: activeIcon,
+          activeIcon: activeIcon,
+          backgroundColor: backgroundColor,
+          label: label,
         );
 
   final String initialLocation;

@@ -2,15 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sora_myanmar/providers/route_provider.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
+import 'package:sora_myanmar/fragment/profile/widgets/order_status_level_widget.dart';
+import 'package:sora_myanmar/fragment/profile/widgets/services_widget.dart';
 
 import '../../constants/widgets_constants.dart';
+import '../../providers/route_provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -27,12 +31,13 @@ class ProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                         child: Row(
                           children: [
                             CircleAvatar(
-                              backgroundColor: Colors.grey.shade300,
+                              backgroundColor: Colors.grey.shade200,
                               radius: 25,
                               child: const Icon(
                                 CupertinoIcons.person_fill,
@@ -43,6 +48,7 @@ class ProfilePage extends StatelessWidget {
                               width: 15,
                             ),
                             Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: const [
                                 Text(
@@ -62,22 +68,14 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {
+                      GestureDetector(
+                        onTap: () {
                           context.pushNamed(profileSetting);
                         },
-                        icon:
-                            //  SvgPicture.asset(
-                            //   "assets/svgs/settings.svg",
-                            //   color: Colors.black,
-                            //   // semanticsLabel: "assets/svgs/settings.svg",
-                            //   width: 100,
-                            //   height: 100,
-                            // ),
-
-                            const Icon(
-                          CupertinoIcons.settings,
-                          color: Colors.black,
+                        child: SvgPicture.asset(
+                          SvgPic.settings,
+                          width: 22,
+                          height: 22,
                         ),
                       ),
                     ],
@@ -85,254 +83,85 @@ class ProfilePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
+                  Text(
+                    'M-Points',
+                    style: txtMedium.copyWith(
+                      color: Colors.grey,
+                    ),
+                  ),
                   Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'M-Points',
-                            style: TextStyle(
-                              // fontSize: 13,
-                              color: Colors.grey,
-                            ),
+                      const Text(
+                        '520,000',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.pink.shade50,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        height: 25,
+                        width: 25,
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Image.asset(
+                            SvgPic.piggyBank,
+                            color: AppColor.red,
+                            fit: BoxFit.cover,
+                            // color: AppColor.red,
                           ),
-                          Row(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-
-                            children: [
-                              const Text(
-                                '520,000',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.pink.shade100,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                height: 25,
-                                width: 25,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Image.asset(
-                                    'assets/images/piggy-bank_outlined.png',
-                                    color: AppColor.red,
-                                    fit: BoxFit.cover,
-                                    // color: AppColor.red,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                        ),
                       ),
                       const SizedBox(
                         width: 10,
                       ),
                       Flexible(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Flexible(
-                              child: RichText(
-                                text: const TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'Earn more points by purchasing new items.',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'poppin',
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: ' Continue Buying',
-                                      style: TextStyle(
-                                        color: AppColor.red,
-                                        fontFamily: 'poppin',
-                                        decoration: TextDecoration.underline,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
+                        child: RichText(
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          text: const TextSpan(
+                            children: [
+                              TextSpan(
+                                text:
+                                    'Earn more points by purchasing new items.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'poppin',
+                                  fontSize: 10,
                                 ),
                               ),
-                            ),
-                          ],
+                              TextSpan(
+                                text: ' Continue Buying',
+                                style: TextStyle(
+                                  color: AppColor.red,
+                                  fontFamily: 'poppin',
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
+                  ),
+                  const SizedBox(
+                    width: 10,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'My Order Status',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Text(
-                    '#119977351',
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    // crossAxisAlignment: 
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.18,
-                        child: Column(
-                          children: [
-                            Checkbox(
-                              fillColor: MaterialStateProperty.all(
-                                AppColor.red,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              value: true,
-                              onChanged: (value) {},
-                            ),
-                            const Text(
-                              'Pending',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 8,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.18,
-                        child: Column(
-                          children: [
-                            Checkbox(
-                              fillColor: MaterialStateProperty.all(
-                                AppColor.red,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              value: true,
-                              onChanged: (value) {},
-                            ),
-                            const Text(
-                              'Order Confirmed',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 8,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.18,
-                        child: Column(
-                          children: [
-                            Checkbox(
-                              side: const BorderSide(
-                                style: BorderStyle.solid,
-                                color: Colors.black,
-                                width: 3,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              value: false,
-                              onChanged: (value) {},
-                            ),
-                            const Text(
-                              'Packaging',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 8,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.18,
-                        child: Column(
-                          children: [
-                            Checkbox(
-                              side: const BorderSide(
-                                style: BorderStyle.solid,
-                                color: Colors.black,
-                                width: 3,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              value: false,
-                              onChanged: (value) {},
-                            ),
-                            const Text(
-                              'Delivery',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 8,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.18,
-                        child: Column(
-                          children: [
-                            Checkbox(
-                              side: const BorderSide(
-                                style: BorderStyle.solid,
-                                color: Colors.black,
-                                width: 3,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              value: false,
-                              onChanged: (value) {},
-                            ),
-                            const Text(
-                              'Complete',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 8,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  const OrderStatusLevelWidget(),
                   const Divider(),
-                  const Text(
+                  Text(
                     'See All Orders Status >',
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
+                    style: txtMedium.copyWith(
                       color: Colors.blueAccent,
                     ),
                   ),
@@ -343,7 +172,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Container(
-              color: Colors.grey.shade100,
+              color: Colors.grey.shade50,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
@@ -352,183 +181,13 @@ class ProfilePage extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Services',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            // color: Colors.blueAccent,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              // color: Colors.blue,
-                              width: MediaQuery.of(context).size.width * 0.18,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.pink.shade100,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    height: 35,
-                                    width: 35,
-                                    padding: const EdgeInsets.all(5),
-                                    child: SvgPicture.asset(
-                                      "assets/svgs/work-alt-svgrepo.svg",
-                                      fit: BoxFit.cover,
-                                      color: AppColor.red,
-                                    ),
-
-                                    //  const Icon(
-                                    //   CupertinoIcons.briefcase,
-                                    //   color: AppColor.red,
-                                    // ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text(
-                                    'Jobs',
-                                    style: txtMedium,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              // color: Colors.blue,
-                              width: MediaQuery.of(context).size.width * 0.18,
-                              child: Column(
-                                // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      // context.pushNamed(housere)
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.pink.shade100,
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      height: 35,
-                                      width: 35,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: SvgPicture.asset(
-                                          "assets/svgs/real-estate-search-house.svg",
-                                          color: AppColor.red,
-                                          // cacheColorFilter: false,
-
-                                          // fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Center(
-                                    child: Text(
-                                      'House Rent',
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: txtMedium,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              // color: Colors.red,
-                              width: MediaQuery.of(context).size.width * 0.18,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.pink.shade100,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    height: 35,
-                                    width: 35,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: SvgPicture.asset(
-                                        "assets/svgs/mobile-signal-svgrepo.svg",
-                                        color: AppColor.red,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Center(
-                                    child: Text(
-                                      'Simcard and Wifi',
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: txtMedium,
-                                      // style: TextStyle(
-                                      //   fontSize: 12,
-                                      // ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.18,
-                              // color: Colors.amber,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.pink.shade100,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    height: 35,
-                                    width: 35,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: SvgPicture.asset(
-                                        "assets/svgs/mountain-svgrepo.svg",
-                                        color: AppColor.red,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text(
-                                    'Travel',
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: txtMedium,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    const ServicesWidget(),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
+                    Text(
                       'Promotions',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        // color: Colors.blueAccent,
-                      ),
+                      style: txtMedium.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 10,
@@ -544,6 +203,9 @@ class ProfilePage extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: kBottomNavigationBarHeight,
             ),
           ],
         ),
