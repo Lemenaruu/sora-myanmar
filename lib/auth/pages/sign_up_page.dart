@@ -24,7 +24,6 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
 
   @override
   void dispose() {
-    
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
@@ -52,6 +51,9 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const Text(
                       'Shop with us, see more opportunity products!',
                       style: txtMedium,
@@ -64,8 +66,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     TextFormField(
                       controller: nameController,
                       decoration: inputDecoration.copyWith(
-                        hintText: 'Username',
-                      ),
+                          labelText: 'Username', labelStyle: txtMedium),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter email';
@@ -80,8 +81,8 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     TextFormField(
                       controller: emailController,
                       decoration: inputDecoration.copyWith(
-                        hintText: 'Mobile number or email',
-                      ),
+                          labelText: 'Mobile number or email',
+                          labelStyle: txtMedium),
                       // decoration: const InputDecoration(
                       //   hintText: 'Mobile number or email',
                       //   hintStyle: txtMedium,
@@ -121,10 +122,11 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     // ),
                     TextFormField(
                       controller: passwordController,
-                      obscureText: _showPassword,
+                      obscureText: !_showPassword,
                       // controller: passwordController,
                       decoration: inputDecoration.copyWith(
-                        hintText: 'Password',
+                        labelText: 'Password',
+                        labelStyle: txtMedium,
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -133,16 +135,19 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                           },
                           icon: Icon(
                             !_showPassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: AppColor.red,
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: !_showPassword ? Colors.grey : AppColor.red,
                           ),
                         ),
                       ),
 
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
+                          return 'Please enter password';
+                        }
+                        if (value.length < 8) {
+                          return 'Your password must have at least 8 characters';
                         }
                         return null;
                       },
@@ -195,8 +200,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                                 context.goNamed(home);
                                 showSnackBar(context, user!.message.toString());
                               } else {
-                                showSnackBar(
-                                    context, user!.message.toString());
+                                showSnackBar(context, user!.message.toString());
                               }
                             }
                           },

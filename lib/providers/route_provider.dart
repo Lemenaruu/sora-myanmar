@@ -35,15 +35,14 @@ import '../ui/home_wifi_request_form/home_wifi_request_form1_page.dart';
 import '../ui/home_wifi_request_form/home_wifi_request_form2_page.dart';
 import '../ui/notification_page.dart';
 import '../ui/order/order_completed_page.dart';
-import '../ui/order/order_failed_page.dart';
 import '../ui/order/order_details_page.dart';
+import '../ui/order/order_failed_page.dart';
 import '../ui/rent_form/rent_form1_page.dart';
 import '../ui/rent_form/rent_form2_page.dart';
 import '../ui/rent_form/rent_form3_page.dart';
 import '../ui/request_a_tour_eachday_page.dart';
 import '../ui/shipping_and_payment/shipping_and_payment_page.dart';
 import '../ui/shipping_and_payment/shipping_and_payment_with_data_page.dart';
-
 
 const home = 'home';
 const profileSetting = 'profile_setting';
@@ -53,7 +52,6 @@ const profile = 'profile';
 const productDetail = 'product_detail';
 const blogJobs = 'blog_jobs';
 
-
 const blogHomeRent = 'blog_home_rent';
 const blogHomeWifiDetail = 'blog_home_wifi_detail';
 const favourite = 'favourite';
@@ -61,7 +59,6 @@ const otp = 'otp';
 const orderFailed = 'order_failed';
 const orderCompleted = 'order_completed';
 const notification = 'notification';
-
 
 const choosePayment = 'choose_payment';
 const myAddresses = 'my_addresses';
@@ -72,36 +69,28 @@ const filterHome = 'filter_home';
 const filterBlogHouseRent = 'filter_blog_house_rent';
 const termsAndConditions = 'terms_and_conditions';
 
-
 const setting = 'setting';
 const saved = 'saved';
 const pointHistory = 'point_history';
 const mySubscriptions = 'my_subscriptions';
 
-
 const rentForm1 = 'rent_form1';
 const rentForm2 = 'rent_form2';
 const rentForm3 = 'rent_form3';
 
-
 const homeWifiRequestForm1 = 'home_wifi_request_form1';
 const homeWifiRequestForm2 = 'home_wifi_request_form2';
 
-
 const requestATourEachday = 'request_a_tour_eachday';
-
 
 const shippingAndPaymentWithData = 'shipping_and_payment_with_data';
 const shippingAndPayment = 'shipping_and_payment';
 const orderDetails = 'order_details';
 const aboutUs = 'about_us';
 
-
 const signIn = 'sign_in';
 const signUp = 'sign_up';
 const signInSignUp = 'sign_in_sign_up';
-
-
 
 final routerProvider = Provider<GoRouter>((ref) {
   var token = ref.watch(tokenProvider);
@@ -111,7 +100,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   final shellNavigatorKey = GlobalKey<NavigatorState>();
 
   return GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/sign_in_sign_up',
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: [
@@ -136,7 +125,6 @@ final routerProvider = Provider<GoRouter>((ref) {
               child: BlogPage(),
             ),
           ),
-
           GoRoute(
             parentNavigatorKey: shellNavigatorKey,
             name: cart,
@@ -165,18 +153,14 @@ final routerProvider = Provider<GoRouter>((ref) {
               child: ProfilePage(),
             ),
           ),
-      
         ],
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: profileSetting,
         path: "/profile_setting",
-      
         pageBuilder: (context, state) => const NoTransitionPage(
           child: ProfileSettingPage(),
-
-          
         ),
       ),
       GoRoute(
@@ -197,7 +181,6 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: BlogJobsPage(),
         ),
       ),
-      
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: blogHomeRent,
@@ -246,7 +229,6 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: OrderCompletedPage(),
         ),
       ),
-
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: notification,
@@ -255,7 +237,6 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: NotificationPage(),
         ),
       ),
-
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: myAddresses,
@@ -424,17 +405,14 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: AboutUsPage(),
         ),
       ),
-
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: signInSignUp,
         path: "/sign_in_sign_up",
-      
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignInSignUpPage(),
         ),
       ),
-
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         name: signIn,

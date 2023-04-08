@@ -5,7 +5,6 @@ import 'package:sora_myanmar/core/error_text.dart';
 import 'package:sora_myanmar/core/loader.dart';
 import 'package:sora_myanmar/providers/category_provider.dart';
 
-
 class CategoryList extends ConsumerStatefulWidget {
   const CategoryList({super.key});
 
@@ -30,7 +29,7 @@ class _CategoryListState extends ConsumerState<CategoryList>
   @override
   Widget build(BuildContext context) {
     print('categorylist');
-   
+
     return ref.watch(allCategoryProvider).when(
           data: (categories) {
             print("categories.length  ---${categories.length}");
@@ -53,7 +52,6 @@ class _CategoryListState extends ConsumerState<CategoryList>
                       //     ?
                       GestureDetector(
                     onTap: () {
-                     
                       selectedButton(index);
                     },
                     child: Padding(
@@ -67,8 +65,7 @@ class _CategoryListState extends ConsumerState<CategoryList>
                           // border: Border.all(color: AppColor.red),
                         ),
                         child: Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
@@ -77,6 +74,7 @@ class _CategoryListState extends ConsumerState<CategoryList>
                                 color: _selectedButton == index
                                     ? Colors.white
                                     : AppColor.red,
+                                fontSize: 13,
                               ),
                             ),
                           ),

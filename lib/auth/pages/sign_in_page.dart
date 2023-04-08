@@ -26,7 +26,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    
+
     super.dispose();
   }
 
@@ -57,8 +57,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
               TextFormField(
                 controller: emailController,
                 decoration: inputDecoration.copyWith(
-                  hintText: 'Mobile number or email',
-                ),
+                    labelText: 'Mobile number or email', labelStyle: txtMedium),
                 // decoration: const InputDecoration(
                 //   hintText: 'Mobile number or email',
                 //   hintStyle: txtMedium,
@@ -83,14 +82,15 @@ class _SignInPageState extends ConsumerState<SignInPage> {
               TextFormField(
                 controller: passwordController,
                 decoration: inputDecoration.copyWith(
-                  hintText: 'Password',
+                  labelText: 'Password',
+                  labelStyle: txtMedium,
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';
                   }
-                  if (value.length < 6) {
-                    return 'Your password must have at least 6 characters';
+                  if (value.length < 8) {
+                    return 'Your password must have at least 8 characters';
                   }
                   return null;
                 },
@@ -144,18 +144,11 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                             context.goNamed(home);
                             showSnackBar(context, 'Login Successfully');
                           } else {
-                            showSnackBar(context, 'Your email is not correct');
+                            showSnackBar(context,
+                                'Your email or password does not match');
                             // emailController.clear();
                             // passwordController.clear();
                           }
-
-                          // ScaffoldMessenger.of(context).showSnackBar(
-                          //   SnackBar(
-                          //     content: Text(isSuccess.toString()),
-                          //     behavior: SnackBarBehavior.floating,
-                          //     duration: const Duration(seconds: 3),
-                          //   ),
-                          // );
                         }
                       },
                 child: loginState.isLoading
