@@ -95,7 +95,7 @@ final tabs = [
     activeIcon: Padding(
       padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
-        "assets/svgs/user_outlined.svg",
+        "assets/svgs/user_filled.svg",
         color: AppColor.red,
         height: 20,
         // fit: BoxFit.cover,

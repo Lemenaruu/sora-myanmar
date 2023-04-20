@@ -52,11 +52,11 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     const Text(
                       'Shop with us, see more opportunity products!',
-                      style: txtMedium,
+                      style: txtLarge,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -75,7 +75,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                       },
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 20,
                     ),
 
                     TextFormField(
@@ -153,7 +153,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                       },
                     ),
                     const SizedBox(
-                      height: 5,
+                      height: 20,
                     ),
                     Flexible(
                       child: CheckboxListTile(
@@ -180,67 +180,61 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                   ],
                 ),
               ),
-              Column(
+              OutlinedButton(
+                style: buttonStyleWithBackgroundColor,
+                onPressed: registerState.isLoading
+                    ? null
+                    : () async {
+                        if (_formKey.currentState!.validate() == true) {
+                          final user = await ref
+                              .read(registerProvider.notifier)
+                              .register(
+                                name: nameController.text.trim(),
+                                email: emailController.text.trim(),
+                                password: passwordController.text.trim(),
+                              );
+                          print(user?.status);
+                          if (user?.success == true && context.mounted) {
+                            context.goNamed(home);
+                            showSnackBar(context, user!.message.toString());
+                          } else {
+                            showSnackBar(context, user!.message.toString());
+                          }
+                        }
+                      },
+                child: const Text(
+                  'CREATE AN ACCOUNT',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 12),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  OutlinedButton(
-                    style: buttonStyleWithBackgroundColor,
-                    onPressed: registerState.isLoading
-                        ? null
-                        : () async {
-                            if (_formKey.currentState!.validate() == true) {
-                              final user = await ref
-                                  .read(registerProvider.notifier)
-                                  .register(
-                                    name: nameController.text.trim(),
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
-                                  );
-                              print(user?.status);
-                              if (user?.success == true && context.mounted) {
-                                context.goNamed(home);
-                                showSnackBar(context, user!.message.toString());
-                              } else {
-                                showSnackBar(context, user!.message.toString());
-                              }
-                            }
-                          },
+                  const Text(
+                    "Already have an account?",
+                    style: txtMedium,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      context.pushNamed(signIn);
+                    },
                     child: const Text(
-                      'CREATE AN ACCOUNT',
+                      " Sign In",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 12),
+                        color: AppColor.red,
+                        fontSize: 12,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Already have an account?",
-                        style: txtMedium,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          context.pushNamed(signIn);
-                        },
-                        child: const Text(
-                          " Sign In",
-                          style: TextStyle(
-                            color: AppColor.red,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10),
                   ),
                 ],
               ),
+                 SizedBox(height: kBottomNavigationBarHeight,),
             ],
           ),
         ),

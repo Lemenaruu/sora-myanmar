@@ -187,7 +187,9 @@ Drawer drawer(BuildContext context, final GlobalKey<ScaffoldState> key) {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: OutlinedButton(
                   style: buttonStyleWithBackgroundColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.goNamed(signIn);
+                  },
                   child: const Text(
                     'Sign Out',
                     style: TextStyle(

@@ -437,7 +437,7 @@ class _OrderDetailsPageState extends ConsumerState<OrderDetailsPage> {
                       child: const Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          'Apple Multi-Touch',
+                          'Apple Multi-Touch Magic Mouse',
                           style: txtMedium,
                         ),
                       ),

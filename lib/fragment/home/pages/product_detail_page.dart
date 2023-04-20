@@ -250,7 +250,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 95,
+                      width: 130,
+                      height: 30,
+                      
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(30),
@@ -262,7 +264,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             shape: _shapeButton,
                             elevation: 0,
                             // color: Colors.amber,
-                            height: 10,
+                            height: 30,
                             minWidth: 20,
                             onPressed: () {
                               setState(() {
@@ -285,7 +287,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     bottomRight: Radius.circular(30))),
                             elevation: 0,
                             // color: Colors.amber,
-                            height: 12,
+                            height: 30,
                             minWidth: 20,
                             onPressed: () {
                               setState(() {

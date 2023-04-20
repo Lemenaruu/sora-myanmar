@@ -121,6 +121,12 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             name: blog,
             path: '/blog',
+            //  redirect: (context, state) {
+            //   if (token == null) {
+            //     return '/login';
+            //   }
+            //   return null;
+            // },
             pageBuilder: (context, state) => const NoTransitionPage(
               child: BlogPage(),
             ),
@@ -131,7 +137,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: '/cart',
             // redirect: (context, state) {
             //   if (token == null) {
-            //     return '/login';
+            //     return '/sign_in';
             //   }
             //   return null;
             // },

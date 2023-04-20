@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sora_myanmar/constants/string_constants.dart';
 import 'package:sora_myanmar/core/utils.dart';
 import 'package:sora_myanmar/providers/login_provider.dart';
 
@@ -42,92 +44,108 @@ class _SignInPageState extends ConsumerState<SignInPage> {
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
                 'Sign In',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
+              const SizedBox(
+              height: 15,
+                ),
               const Text(
                 'Welcome back, New Products are arriving!',
-                style: txtMedium,
+                style: txtLarge,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
+              const SizedBox(
+              height: 20,
+                ),
               TextFormField(
                 controller: emailController,
                 decoration: inputDecoration.copyWith(
-                    labelText: 'Mobile number or email', labelStyle: txtMedium),
+                labelText: 'Mobile number or email', labelStyle: txtMedium),
                 // decoration: const InputDecoration(
                 //   hintText: 'Mobile number or email',
                 //   hintStyle: txtMedium,
                 // ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter mobile number or email';
-                  } else if (RegExp(r"^([0-9])").hasMatch(value)) {
-                    if (!RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)')
-                        .hasMatch(value)) {
-                      return 'Please enter valid phone number';
-                    }
-                    return null;
-                  } else if (RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$")
-                      .hasMatch(value)) {
-                    return null;
-                  } else {
-                    return 'Please enter a valid email';
-                  }
+              if (value == null || value.isEmpty) {
+                return 'Please enter mobile number or email';
+              } else if (RegExp(r"^([0-9])").hasMatch(value)) {
+                if (!RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)')
+                .hasMatch(value)) {
+              return 'Please enter valid phone number';
+                }
+                return null;
+              } else if (RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$")
+              .hasMatch(value)) {
+                return null;
+              } else {
+                return 'Please enter a valid email';
+              }
                 },
               ),
+              const SizedBox(
+              height: 20,
+                ),
               TextFormField(
                 controller: passwordController,
                 decoration: inputDecoration.copyWith(
-                  labelText: 'Password',
-                  labelStyle: txtMedium,
+              labelText: 'Password',
+              labelStyle: txtMedium,
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  if (value.length < 8) {
-                    return 'Your password must have at least 8 characters';
-                  }
-                  return null;
+              if (value == null || value.isEmpty) {
+                return 'Please enter your password';
+              }
+              if (value.length < 8) {
+                return 'Your password must have at least 8 characters';
+              }
+              return null;
                 },
               ),
+                const SizedBox(
+              height: 20,
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Flexible(
-                    child: CheckboxListTile(
-                      contentPadding: EdgeInsets.zero,
-
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: _isChecked,
-                      checkColor: Colors.white,
-                      // selectedTileColor: Colors.amberAccent,
-                      // tileColor: Colors.amber,
-                      activeColor: AppColor.red,
-                      checkboxShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          _isChecked = value!;
-                        });
-                      },
-                      title: const Text(
-                        'Remember me',
-                        style: txtMedium,
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    'Forgot password?',
-                    style: txtMedium,
-                  ),
+              Flexible(
+                child: CheckboxListTile(
+              contentPadding: EdgeInsets.zero,
+              
+              controlAffinity: ListTileControlAffinity.leading,
+              value: _isChecked,
+              checkColor: Colors.white,
+              // selectedTileColor: Colors.amberAccent,
+              // tileColor: Colors.amber,
+              activeColor: AppColor.red,
+              checkboxShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  _isChecked = value!;
+                });
+              },
+              title: const Text(
+                'Remember me',
+                style: txtMedium,
+              ),
+                ),
+              ),
+              const Text(
+                'Forgot password?',
+                style: txtMedium,
+              ),
                 ],
               ),
+               const SizedBox(
+                  height: 30,
+                ),
+              
               OutlinedButton(
                 style: buttonStyleWithBackgroundColor,
                 onPressed: loginState.isLoading
@@ -161,60 +179,63 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                             fontSize: 12),
                       ),
               ),
+                const SizedBox(
+                  height: 40,
+                ),
               const Align(alignment: Alignment.center, child: Text('or')),
+                const SizedBox(
+                  height: 40,
+                ),
               OutlinedButton.icon(
                 style: buttonStyleWithBordersideColor,
                 onPressed: () {},
-                icon: const FaIcon(
-                  FontAwesomeIcons.google,
-                  size: 20,
-                  color: AppColor.red,
-                ),
+                icon: SvgPicture.asset(SvgPic.google,color: AppColor.red,height: 30),
                 label: Text('Continue With Google',
-                    style: txtMedium.copyWith(
-                        fontWeight: FontWeight.bold, color: AppColor.red)),
+                style: txtMedium.copyWith(
+                    fontWeight: FontWeight.bold, color: AppColor.red),),
               ),
+                const SizedBox(
+                  height: 20,
+                ),
               OutlinedButton.icon(
                 style: buttonStyleWithBordersideColor.copyWith(
-                  side: MaterialStateProperty.all(
-                    const BorderSide(color: Colors.blueAccent),
-                  ),
+              side: MaterialStateProperty.all(
+                const BorderSide(color: Colors.blueAccent),
+              ),
                 ),
                 onPressed: () {},
-                icon: const FaIcon(
-                  FontAwesomeIcons.facebookF,
-                  size: 20,
-                ),
+                icon: SvgPicture.asset(SvgPic.facebook,color: Colors.blueAccent,height: 30,),
                 label: Text(
-                  'Continue With Facebook',
-                  style: txtMedium.copyWith(
-                      fontWeight: FontWeight.bold, color: Colors.blueAccent),
+              'Continue With Facebook',
+              style: txtMedium.copyWith(
+                  fontWeight: FontWeight.bold, color: Colors.blueAccent),
                 ),
               ),
+               Spacer(),
+             
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Don't have an account?",
-                    style: txtMedium,
+              const Text(
+                "Don't have an account?",
+                style: txtMedium,
+              ),
+              GestureDetector(
+                onTap: () {
+                  context.pushNamed(signUp);
+                },
+                child: const Text(
+                  " Sign Up",
+                  style: TextStyle(
+                    color: AppColor.red,
+                    fontSize: 12,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      context.pushNamed(signUp);
-                    },
-                    child: const Text(
-                      " Sign Up",
-                      style: TextStyle(
-                        color: AppColor.red,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
+                ),
+              ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10),
-              ),
+              
+             SizedBox(height: kBottomNavigationBarHeight,),
             ],
           ),
         ),

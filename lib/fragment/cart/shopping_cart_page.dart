@@ -67,11 +67,13 @@ class _ShoppingCartPageState extends ConsumerState<ShoppingCartPage> {
               const SizedBox(
                 height: 10,
               ),
-              SizedBox(
-                height: size.height * 0.6,
-                width: size.width,
+              Container(
+                // color: Colors.amberAccent,
+                height: size.height * 0.5,
+
                 child: ListView.builder(
-                  scrollDirection: Axis.vertical,
+                  padding: EdgeInsets.zero,
+                  // physics: BouncingScrollPhysics(),
                   // physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: 5,
@@ -398,8 +400,8 @@ class _ShoppingCartPageState extends ConsumerState<ShoppingCartPage> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              const SizedBox(
-                height: kBottomNavigationBarHeight + 10,
+               SizedBox(
+                height: kBottomNavigationBarHeight + 30,
               ),
             ],
           ),

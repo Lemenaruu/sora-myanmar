@@ -35,6 +35,8 @@ class SvgPic {
   static String delivery = "assets/svgs/delivery.svg";
   static String masterCard = "assets/svgs/mastercard.svg";
   static String phoneLock = "assets/svgs/phone_lock.svg";
+  static String facebook = "assets/svgs/facebook.svg";
+  static String google = "assets/svgs/google.svg";
 
   static String piggyBank = "assets/images/piggy-bank_outlined.png";
 }
